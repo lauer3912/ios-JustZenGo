@@ -29,7 +29,7 @@ class HealthIntegration: ObservableObject {
         
         let typesToRead: Set<HKObjectType> = [
             HKObjectType.quantityType(forIdentifier: .stepCount)!,
-            HKObjectType.quantityType(forIdentifier: .sleepAnalysis)!
+            HKObjectType.categoryType(forIdentifier: .sleepAnalysis)!
         ]
         
         healthStore.requestAuthorization(toShare: nil, read: typesToRead) { [weak self] success, error in
