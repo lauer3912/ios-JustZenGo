@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import Combine
 import UserNotifications
 import AVFoundation
 
@@ -17,14 +16,16 @@ struct FocusSession: Codable, Identifiable {
     let duration: Int
     let type: SessionType
     var completed: Bool
+    var labelId: UUID?
     
-    init(id: UUID = UUID(), startTime: Date = Date(), endTime: Date? = nil, duration: Int, type: SessionType, completed: Bool = false) {
+    init(id: UUID = UUID(), startTime: Date = Date(), endTime: Date? = nil, duration: Int, type: SessionType, completed: Bool = false, labelId: UUID? = nil) {
         self.id = id
         self.startTime = startTime
         self.endTime = endTime
         self.duration = duration
         self.type = type
         self.completed = completed
+        self.labelId = labelId
     }
 }
 
