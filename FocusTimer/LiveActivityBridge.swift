@@ -30,6 +30,7 @@ class LiveActivityManager: ObservableObject {
     
     @Published var currentActivity: Activity<FocusActivityAttributes>?
     @Published var isActivitySupported: Bool = false
+    private var currentTotalDuration: Int = 25 * 60
     
     private var updateTimer: Timer?
     
@@ -72,6 +73,7 @@ class LiveActivityManager: ObservableObject {
             )
             currentActivity = activity
             isActivitySupported = true
+            currentTotalDuration = totalDuration
         } catch {
             print("Failed to start Live Activity: \(error)")
             isActivitySupported = false
@@ -92,7 +94,8 @@ class LiveActivityManager: ObservableObject {
             timeRemaining: timeRemaining,
             sessionName: sessionName,
             totalSessions: totalSessions,
-            completedSessions: completedSessions
+            completedSessions: completedSessions,
+            totalDuration: currentTotalDuration
         )
         
         Task {
@@ -110,7 +113,8 @@ class LiveActivityManager: ObservableObject {
             timeRemaining: 0,
             sessionName: "Completed!",
             totalSessions: 0,
-            completedSessions: 0
+            completedSessions: 0,
+            totalDuration: currentTotalDuration
         )
         
         Task {
