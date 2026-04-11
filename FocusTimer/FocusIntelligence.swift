@@ -203,8 +203,12 @@ class FocusIntelligence: ObservableObject {
         if let encoded = try? JSONEncoder().encode(insights) {
             UserDefaults.standard.set(encoded, forKey: "focus_insights")
         }
-        UserDefaults.standard.set(peakHours, forKey: "peak_hours")
-        UserDefaults.standard.set(bestDays, forKey: "best_days")
+        if let encoded = try? JSONEncoder().encode(peakHours) {
+            UserDefaults.standard.set(encoded, forKey: "peak_hours")
+        }
+        if let encoded = try? JSONEncoder().encode(bestDays) {
+            UserDefaults.standard.set(encoded, forKey: "best_days")
+        }
         UserDefaults.standard.set(focusScore, forKey: "focus_score")
     }
     
@@ -213,11 +217,13 @@ class FocusIntelligence: ObservableObject {
            let decoded = try? JSONDecoder().decode([FocusInsight].self, from: data) {
             insights = decoded
         }
-        if let data = UserDefaults.standard.data(forKey: "peak_hours") {
-            peakHours = data
+        if let data = UserDefaults.standard.data(forKey: "peak_hours"),
+           let decoded = try? JSONDecoder().decode([Int].self, from: data) {
+            peakHours = decoded
         }
-        if let data = UserDefaults.standard.data(forKey: "best_days") {
-            bestDays = data
+        if let data = UserDefaults.standard.data(forKey: "best_days"),
+           let decoded = try? JSONDecoder().decode([Int].self, from: data) {
+            bestDays = decoded
         }
         focusScore = UserDefaults.standard.integer(forKey: "focus_score")
     }
