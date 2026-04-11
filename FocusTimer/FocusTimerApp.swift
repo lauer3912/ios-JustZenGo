@@ -27,6 +27,8 @@ struct FocusTimerApp: App {
         _ = LiveActivityManager.shared
         _ = ThemeManager.shared
         _ = TimerManager.shared
+        _ = DailyPlanner.shared
+        _ = RollingPomodoroManager.shared
         
         // Load saved data
         FocusModeManager.shared.load()
