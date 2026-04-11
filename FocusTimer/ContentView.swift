@@ -36,6 +36,7 @@ struct ContentView: View {
     @State private var showProjectPicker: Bool = false
     @State private var showDailyPlanner: Bool = false
     @State private var showRollingPomodoro: Bool = false
+    @State private var initialPhaseDuration: Int = 25 * 60 // Track original duration for progress calc
     
     var body: some View {
         ZStack {
@@ -507,8 +508,8 @@ struct ContentView: View {
     }
     
     private var progress: Double {
-        let total = Double(currentPhaseDuration)
-        return Double(currentPhaseDuration - timeRemaining) / total
+        let total = Double(initialPhaseDuration)
+        return Double(initialPhaseDuration - timeRemaining) / total
     }
     
     private var currentPhaseDuration: Int {
@@ -540,6 +541,7 @@ struct ContentView: View {
     private func startTimer() {
         isRunning = true
         sessionStartTime = Date()
+        initialPhaseDuration = currentPhaseDuration
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             if timeRemaining > 0 {
@@ -620,10 +622,12 @@ struct ContentView: View {
         if isWorkPhase {
             isWorkPhase = false
             timeRemaining = settings.shortBreak
+            initialPhaseDuration = settings.shortBreak
         } else {
             isWorkPhase = true
             currentSessionIndex = 0
             timeRemaining = settings.work
+            initialPhaseDuration = settings.work
         }
     }
     
@@ -653,6 +657,7 @@ struct ContentView: View {
         if !isRunning {
             let s = modeManager.getCurrentModeSettings()
             timeRemaining = s.work
+            initialPhaseDuration = s.work
         }
     }
 }
