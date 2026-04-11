@@ -235,9 +235,9 @@ struct LargeWidgetView: View {
             
             // Main stats
             HStack(spacing: 20) {
-                StatBox(value: "\(entry.todaySessions)", label: "Sessions", icon: "checkmark.circle.fill", color: .green)
-                StatBox(value: "\(entry.totalMinutesToday)", label: "Minutes", icon: "clock.fill", color: .blue)
-                StatBox(value: "\(entry.currentStreak)", label: "Streak", icon: "flame.fill", color: .orange)
+                WidgetStatBox(value: "\(entry.todaySessions)", label: "Sessions", icon: "checkmark.circle.fill", color: .green)
+                WidgetStatBox(value: "\(entry.totalMinutesToday)", label: "Minutes", icon: "clock.fill", color: .blue)
+                WidgetStatBox(value: "\(entry.currentStreak)", label: "Streak", icon: "flame.fill", color: .orange)
             }
             
             // Progress bar
@@ -285,7 +285,7 @@ struct LargeWidgetView: View {
     }
 }
 
-struct StatBox: View {
+struct WidgetStatBox: View {
     let value: String
     let label: String
     let icon: String
