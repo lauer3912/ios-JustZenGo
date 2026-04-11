@@ -123,7 +123,7 @@ class FocusIntelligence: ObservableObject {
         focusScore = min(max(score, 0), 100)
     }
     
-    func addInsight(text: String, category: InsightCategory = .tip, importance: InsightImportance = .medium) {
+    func addInsight(text: String, category: InsightCategory = .wellness, importance: InsightImportance = .medium) {
         let type: FocusInsight.InsightType
         switch category {
         case .pattern: type = .positive
