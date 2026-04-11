@@ -67,9 +67,9 @@ struct FocusWidgetProvider: TimelineProvider {
             dailyGoal: settings.dailyGoal,
             currentStreak: stats.currentStreak,
             totalMinutesToday: stats.todayMinutes,
-            isFocusing: timerState.isRunning,
-            timeRemaining: timerState.isRunning ? timerState.remainingSeconds : nil,
-            currentModeName: FocusModeManager.shared.currentMode?.name ?? "Focus"
+            isFocusing: false,
+            timeRemaining: nil,
+            currentModeName: FocusModeManager.shared.currentMode.displayName
         )
     }
 }
@@ -184,9 +184,9 @@ struct MediumWidgetView: View {
                 }
                 
                 HStack(spacing: 16) {
-                    WidgetStat(icon: "flame.fill", value: "\(entry.currentStreak)", label: "Streak", color: .orange)
-                    WidgetStat(icon: "clock.fill", value: "\(entry.totalMinutesToday)", label: "Minutes", color: .blue)
-                    WidgetStat(icon: "checkmark.circle.fill", value: "\(entry.todaySessions)", label: "Sessions", color: .green)
+                    WidgetStatBox(value: "\(entry.currentStreak)", label: "Streak", icon: "flame.fill", color: .orange)
+                    WidgetStatBox(value: "\(entry.totalMinutesToday)", label: "Minutes", icon: "clock.fill", color: .blue)
+                    WidgetStatBox(value: "\(entry.todaySessions)", label: "Sessions", icon: "checkmark.circle.fill", color: .green)
                 }
                 
                 if entry.isFocusing {
@@ -389,7 +389,7 @@ struct FocusTimerWidget: Widget {
     
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: FocusWidgetProvider()) { entry in
-            FocusWidgetEntryView(entry: entry)
+            FocusTimerWidgetEntryView(entry: entry)
         }
         .configurationDisplayName("FocusTimer")
         .description("Track your daily focus progress.")
@@ -429,7 +429,7 @@ class WidgetDataAccessor {
             totalMinutesToday: FocusDataManager.shared.statistics.todayMinutes,
             isFocusing: false,
             timeRemaining: nil,
-            currentModeName: FocusModeManager.shared.currentMode?.name ?? "Focus"
+            currentModeName: FocusModeManager.shared.currentMode.displayName
         )
     }
 }
