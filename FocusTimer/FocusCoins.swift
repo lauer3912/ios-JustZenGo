@@ -5,6 +5,7 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 // MARK: - Focus Coin Item
 
@@ -104,17 +105,19 @@ class FocusCoinManager: ObservableObject {
     }
     
     func equipItem(_ itemId: String) {
+        // First equip the item
         if let index = inventory.firstIndex(where: { $0.itemId == itemId }) {
             inventory[index].isEquipped = true
         }
         
+        // Find the item details
+        guard let item = shopItems.first(where: { $0.id == itemId }) else { return }
+        
         // Unequip others in same category
-        if let item = shopItems.first(where: { $0.id == itemId }) {
-            for i in 0..<inventory.count {
-                if let otherItem = shopItems.first(where: { $0.id == inventory[i].itemId }),
-                   otherItem.category == item.category && inventory[i].itemId != itemId {
-                    inventory[i].isEquipped = false
-                }
+        for i in 0..<inventory.count {
+            if let otherItem = shopItems.first(where: { $0.id == inventory[i].itemId }),
+               otherItem.category == item.category && inventory[i].itemId != itemId {
+                inventory[i].isEquipped = false
             }
         }
         
