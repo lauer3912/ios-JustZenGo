@@ -111,7 +111,7 @@ class AICoach: ObservableObject {
             return concern
         }
         
-        if stats.todaySessions >= stats.dailyGoal {
+        if stats.todaySessions >= dataManager.settings.dailyGoal {
             let celebration = "You hit your daily goal! Amazing work today!"
             messages.append(CoachMessage(
                 id: UUID(),
@@ -152,7 +152,7 @@ class AICoach: ObservableObject {
             return "First session of the day complete! Great start!"
         }
         
-        if sessionCount == stats.dailyGoal {
+        if sessionCount == dataManager.settings.dailyGoal {
             return "🎉 Daily goal achieved! You're on fire today!"
         }
         
