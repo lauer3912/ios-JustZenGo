@@ -15,6 +15,10 @@ struct FocusTimerApp: App {
         _ = DailyChallengeManager.shared
         _ = FocusSoundManager.shared
         _ = SessionLabelManager.shared
+        _ = LevelingSystem.shared
+        _ = FocusCoinManager.shared
+        _ = CelebrationManager.shared
+        _ = AchievementManager.shared
         
         // Load saved data
         FocusModeManager.shared.load()
@@ -23,6 +27,10 @@ struct FocusTimerApp: App {
         DailyChallengeManager.shared.generateDailyChallenge()
         FocusSoundManager.shared.load()
         SessionLabelManager.shared.load()
+        LevelingSystem.shared.load()
+        FocusCoinManager.shared.load()
+        CelebrationManager.shared.load()
+        AchievementManager.shared.load()
     }
     
     var body: some Scene {

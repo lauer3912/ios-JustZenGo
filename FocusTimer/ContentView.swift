@@ -12,6 +12,10 @@ struct ContentView: View {
     @StateObject private var challengeManager = DailyChallengeManager.shared
     @StateObject private var soundManager = FocusSoundManager.shared
     @StateObject private var labelManager = SessionLabelManager.shared
+    @StateObject private var levelingSystem = LevelingSystem.shared
+    @StateObject private var coinManager = FocusCoinManager.shared
+    @StateObject private var celebrationManager = CelebrationManager.shared
+    @StateObject private var achievementManager = AchievementManager.shared
     
     @State private var timeRemaining: Int = 25 * 60
     @State private var isRunning: Bool = false
@@ -25,6 +29,9 @@ struct ContentView: View {
     @State private var showModeSelector: Bool = false
     @State private var showStackEditor: Bool = false
     @State private var showLabelPicker: Bool = false
+    @State private var showProfile: Bool = false
+    @State private var showShop: Bool = false
+    @State private var showAchievements: Bool = false
     
     var body: some View {
         ZStack {
@@ -85,9 +92,27 @@ struct ContentView: View {
         .sheet(isPresented: $showModeSelector) { ModeSelectorView() }
         .sheet(isPresented: $showStackEditor) { TimerStackView() }
         .sheet(isPresented: $showLabelPicker) { LabelPickerView() }
+        .sheet(isPresented: $showProfile) { ProfileView() }
+        .sheet(isPresented: $showShop) { FocusShopView() }
+        .sheet(isPresented: $showAchievements) { AchievementsView() }
+        
+        // Celebration overlay
+        .overlay(
+            Group {
+                if celebrationManager.showCelebration, let milestone = celebrationManager.currentMilestone {
+                    CelebrationOverlay(milestone: milestone, isShowing: $celebrationManager.showCelebration)
+                        .transition(.opacity)
+                }
+            }
+        )
+        
         .onAppear {
             challengeManager.generateDailyChallenge()
             loadModeSettings()
+            levelingSystem.load()
+            coinManager.load()
+            achievementManager.load()
+            celebrationManager.load()
         }
     }
     
@@ -143,6 +168,48 @@ struct ContentView: View {
             .foregroundColor(dataManager.statistics.todaySessions >= dataManager.settings.dailyGoal ? Color(hex: "4ECB71") : Color(hex: "8E8E93"))
             
             Spacer()
+            
+            Button(action: { showAchievements = true }) {
+                HStack(spacing: 4) {
+                    Image(systemName: "trophy.fill")
+                        .font(.system(size: 14))
+                    Text("\(achievementManager.totalUnlocked)")
+                        .font(.system(size: 12, weight: .bold))
+                }
+                .foregroundColor(Color(hex: "FFD60A"))
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color(hex: "FFD60A").opacity(0.2))
+                .cornerRadius(12)
+            }
+            
+            Button(action: { showShop = true }) {
+                HStack(spacing: 4) {
+                    Image(systemName: "bitcoinsign.circle.fill")
+                        .font(.system(size: 14))
+                    Text("\(coinManager.coins)")
+                        .font(.system(size: 12, weight: .bold))
+                }
+                .foregroundColor(Color(hex: "FF9500"))
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color(hex: "FF9500").opacity(0.2))
+                .cornerRadius(12)
+            }
+            
+            Button(action: { showProfile = true }) {
+                HStack(spacing: 4) {
+                    Image(systemName: "star.fill")
+                        .font(.system(size: 12))
+                    Text("Lv.\(levelingSystem.currentLevel)")
+                        .font(.system(size: 12, weight: .bold))
+                }
+                .foregroundColor(Color(hex: "AF52DE"))
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color(hex: "AF52DE").opacity(0.2))
+                .cornerRadius(12)
+            }
             
             Button(action: { showStatistics = true }) {
                 Image(systemName: "chart.bar.fill")
@@ -857,4 +924,406 @@ extension Color {
 
 #Preview {
     ContentView()
+}
+
+// MARK: - Profile View
+
+struct ProfileView: View {
+    @StateObject private var levelingSystem = LevelingSystem.shared
+    @StateObject private var coinManager = FocusCoinManager.shared
+    @StateObject private var achievementManager = AchievementManager.shared
+    @StateObject private var dataManager = FocusDataManager.shared
+    @Environment(\.dismiss) private var dismiss
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color(hex: "1C1C1E")
+                    .ignoresSafeArea()
+                
+                ScrollView {
+                    VStack(spacing: 24) {
+                        // Level card
+                        VStack(spacing: 16) {
+                            ZStack {
+                                Circle()
+                                    .stroke(Color(hex: "AF52DE").opacity(0.3), lineWidth: 8)
+                                    .frame(width: 120, height: 120)
+                                
+                                Circle()
+                                    .trim(from: 0, to: levelingSystem.progressToNextLevel)
+                                    .stroke(Color(hex: "AF52DE"), style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                                    .frame(width: 120, height: 120)
+                                    .rotationEffect(.degrees(-90))
+                                
+                                VStack(spacing: 4) {
+                                    Text("Lv.\(levelingSystem.currentLevel)")
+                                        .font(.system(size: 32, weight: .bold))
+                                        .foregroundColor(.white)
+                                    
+                                    Text(levelingSystem.levelTitle)
+                                        .font(.system(size: 12))
+                                        .foregroundColor(Color(hex: "AF52DE"))
+                                }
+                            }
+                            
+                            Text("\(levelingSystem.currentXP) / \(levelingSystem.xpForNextLevel) XP")
+                                .font(.system(size: 14))
+                                .foregroundColor(Color(hex: "8E8E93"))
+                        }
+                        .padding(24)
+                        .background(Color(hex: "2C2C2E"))
+                        .cornerRadius(20)
+                        
+                        // Stats grid
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                            ProfileStatCard(title: "Total XP", value: "\(levelingSystem.totalXPEarned)", icon: "sparkles", color: .yellow)
+                            ProfileStatCard(title: "Focus Coins", value: "\(coinManager.coins)", icon: "bitcoinsign.circle.fill", color: .orange)
+                            ProfileStatCard(title: "Achievements", value: "\(achievementManager.totalUnlocked)/\(achievementManager.badges.count)", icon: "trophy.fill", color: .purple)
+                            ProfileStatCard(title: "Current Streak", value: "\(dataManager.statistics.currentStreak) days", icon: "flame.fill", color: .red)
+                        }
+                        
+                        // Streak heatmap
+                        StreakHeatmapView()
+                        
+                        Spacer(minLength: 40)
+                    }
+                    .padding()
+                }
+            }
+            .navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") { dismiss() }
+                        .foregroundColor(Color(hex: "FF6B6B"))
+                }
+            }
+        }
+        .preferredColorScheme(.dark)
+    }
+}
+
+struct ProfileStatCard: View {
+    let title: String
+    let value: String
+    let icon: String
+    let color: Color
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Image(systemName: icon)
+                .font(.system(size: 24))
+                .foregroundColor(color)
+            
+            Text(value)
+                .font(.system(size: 20, weight: .bold))
+                .foregroundColor(.white)
+            
+            Text(title)
+                .font(.system(size: 12))
+                .foregroundColor(Color(hex: "8E8E93"))
+        }
+        .frame(maxWidth: .infinity)
+        .padding(16)
+        .background(Color(hex: "2C2C2E"))
+        .cornerRadius(16)
+    }
+}
+
+// MARK: - Focus Shop View
+
+struct FocusShopView: View {
+    @StateObject private var coinManager = FocusCoinManager.shared
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var selectedCategory: FocusCoinItem.ItemCategory = .theme
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color(hex: "1C1C1E")
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    // Coin balance
+                    HStack {
+                        Image(systemName: "bitcoinsign.circle.fill")
+                            .font(.system(size: 24))
+                            .foregroundColor(Color(hex: "FF9500"))
+                        
+                        Text("\(coinManager.coins)")
+                            .font(.system(size: 24, weight: .bold))
+                            .foregroundColor(.white)
+                        
+                        Spacer()
+                        
+                        Text("Total earned: \(coinManager.totalEarned)")
+                            .font(.system(size: 12))
+                            .foregroundColor(Color(hex: "8E8E93"))
+                    }
+                    .padding()
+                    .background(Color(hex: "2C2C2E"))
+                    
+                    // Category picker
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach([FocusCoinItem.ItemCategory.theme, .sound, .accessory, .powerup], id: \.self) { category in
+                                Button(action: { selectedCategory = category }) {
+                                    Text(category.rawValue.capitalized)
+                                        .font(.system(size: 14, weight: .medium))
+                                        .foregroundColor(selectedCategory == category ? .white : Color(hex: "8E8E93"))
+                                        .padding(.horizontal, 16)
+                                        .padding(.vertical, 8)
+                                        .background(selectedCategory == category ? Color(hex: "FF9500") : Color(hex: "3A3A3C"))
+                                        .cornerRadius(20)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .padding(.vertical, 12)
+                    
+                    // Items grid
+                    ScrollView {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                            ForEach(itemsForCategory) { item in
+                                ShopItemCard(item: item, isOwned: coinManager.isOwned(item.id)) {
+                                    if coinManager.spendCoins(item.price, for: item.id) {
+                                        // Purchased
+                                    }
+                                }
+                            }
+                        }
+                        .padding()
+                    }
+                }
+            }
+            .navigationTitle("Focus Shop")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") { dismiss() }
+                        .foregroundColor(Color(hex: "FF6B6B"))
+                }
+            }
+        }
+        .preferredColorScheme(.dark)
+    }
+    
+    private var itemsForCategory: [FocusCoinItem] {
+        coinManager.shopItems.filter { $0.category == selectedCategory }
+    }
+}
+
+struct ShopItemCard: View {
+    let item: FocusCoinItem
+    let isOwned: Bool
+    let onPurchase: () -> Void
+    
+    var body: some View {
+        VStack(spacing: 12) {
+            Image(systemName: item.icon)
+                .font(.system(size: 32))
+                .foregroundColor(isOwned ? Color(hex: "4ECB71") : Color(hex: "FF9500"))
+                .frame(width: 60, height: 60)
+                .background(Color(hex: "3A3A3C"))
+                .cornerRadius(12)
+            
+            Text(item.name)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+            
+            Text(item.description)
+                .font(.system(size: 10))
+                .foregroundColor(Color(hex: "8E8E93"))
+                .multilineTextAlignment(.center)
+                .lineLimit(2)
+            
+            if isOwned {
+                Text("Owned")
+                    .font(.system(size: 12, weight: .bold))
+                    .foregroundColor(Color(hex: "4ECB71"))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color(hex: "4ECB71").opacity(0.2))
+                    .cornerRadius(12)
+            } else {
+                Button(action: onPurchase) {
+                    HStack(spacing: 4) {
+                        Image(systemName: "bitcoinsign.circle.fill")
+                            .font(.system(size: 12))
+                        Text("\(item.price)")
+                            .font(.system(size: 12, weight: .bold))
+                    }
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 6)
+                    .background(Color(hex: "FF9500"))
+                    .cornerRadius(12)
+                }
+            }
+        }
+        .padding()
+        .background(Color(hex: "2C2C2E"))
+        .cornerRadius(16)
+    }
+}
+
+// MARK: - Achievements View
+
+struct AchievementsView: View {
+    @StateObject private var achievementManager = AchievementManager.shared
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var selectedCategory: AchievementBadge.AchievementCategory = .consistency
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                Color(hex: "1C1C1E")
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0) {
+                    // Progress header
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("\(achievementManager.totalUnlocked) / \(achievementManager.badges.count)")
+                                .font(.system(size: 24, weight: .bold))
+                                .foregroundColor(.white)
+                            
+                            Text("Achievements Unlocked")
+                                .font(.system(size: 12))
+                                .foregroundColor(Color(hex: "8E8E93"))
+                        }
+                        
+                        Spacer()
+                        
+                        CircularProgressView(progress: Double(achievementManager.totalUnlocked) / Double(max(achievementManager.badges.count, 1)))
+                            .frame(width: 50, height: 50)
+                    }
+                    .padding()
+                    .background(Color(hex: "2C2C2E"))
+                    
+                    // Category picker
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 12) {
+                            ForEach(AchievementBadge.AchievementCategory.allCases, id: \.self) { category in
+                                Button(action: { selectedCategory = category }) {
+                                    HStack(spacing: 6) {
+                                        Image(systemName: category.icon)
+                                            .font(.system(size: 12))
+                                        Text(category.displayName)
+                                            .font(.system(size: 12, weight: .medium))
+                                    }
+                                    .foregroundColor(selectedCategory == category ? .white : Color(hex: "8E8E93"))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(selectedCategory == category ? Color(hex: "FFD60A") : Color(hex: "3A3A3C"))
+                                    .cornerRadius(16)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .padding(.vertical, 12)
+                    
+                    // Badges list
+                    ScrollView {
+                        LazyVStack(spacing: 8) {
+                            ForEach(achievementManager.getBadgesByCategory(selectedCategory)) { badge in
+                                AchievementBadgeRow(badge: badge)
+                            }
+                        }
+                        .padding()
+                    }
+                }
+            }
+            .navigationTitle("Achievements")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") { dismiss() }
+                        .foregroundColor(Color(hex: "FF6B6B"))
+                }
+            }
+        }
+        .preferredColorScheme(.dark)
+    }
+}
+
+struct CircularProgressView: View {
+    let progress: Double
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(Color(hex: "3A3A3C"), lineWidth: 6)
+            
+            Circle()
+                .trim(from: 0, to: progress)
+                .stroke(Color(hex: "FFD60A"), style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                .rotationEffect(.degrees(-90))
+            
+            Text("\(Int(progress * 100))%")
+                .font(.system(size: 12, weight: .bold))
+                .foregroundColor(.white)
+        }
+    }
+}
+
+struct AchievementBadgeRow: View {
+    let badge: AchievementBadge
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            ZStack {
+                Circle()
+                    .fill(badge.isUnlocked ? Color(hex: "FFD60A").opacity(0.2) : Color(hex: "3A3A3C"))
+                    .frame(width: 50, height: 50)
+                
+                Image(systemName: badge.icon)
+                    .font(.system(size: 20))
+                    .foregroundColor(badge.isUnlocked ? Color(hex: "FFD60A") : Color(hex: "8E8E93"))
+            }
+            
+            VStack(alignment: .leading, spacing: 4) {
+                Text(badge.name)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(badge.isUnlocked ? .white : Color(hex: "8E8E93"))
+                
+                Text(badge.description)
+                    .font(.system(size: 12))
+                    .foregroundColor(Color(hex: "8E8E93"))
+                
+                if let date = badge.unlockedDate, badge.isUnlocked {
+                    Text("Unlocked \(formattedDate(date))")
+                        .font(.system(size: 10))
+                        .foregroundColor(Color(hex: "4ECB71"))
+                }
+            }
+            
+            Spacer()
+            
+            if badge.isUnlocked {
+                Image(systemName: "checkmark.circle.fill")
+                    .foregroundColor(Color(hex: "4ECB71"))
+            } else {
+                Text("\(badge.requirement)")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(Color(hex: "8E8E93"))
+            }
+        }
+        .padding()
+        .background(Color(hex: "2C2C2E"))
+        .cornerRadius(12)
+        .opacity(badge.isUnlocked ? 1 : 0.7)
+    }
+    
+    private func formattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        return formatter.string(from: date)
+    }
 }
