@@ -306,4 +306,5 @@ class TimerManager: ObservableObject {
     private func getModeDuration(for mode: FocusModeType) -> Int {
         // Use FocusModeType computed property directly
         return mode.workDuration
+    }
 }
