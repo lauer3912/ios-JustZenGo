@@ -24,6 +24,29 @@ struct FocusInsight: Codable, Identifiable {
     }
 }
 
+// MARK: - Insight Categories
+
+enum InsightCategory: String {
+    case pattern = "pattern"
+    case wellness = "wellness"
+    case achievement = "achievement"
+    case reflection = "reflection"
+    
+    var icon: String {
+        switch self {
+        case .pattern: return "chart.line.uptrend.xyaxis"
+        case .wellness: return "heart.fill"
+        case .achievement: return "trophy.fill"
+        case .reflection: return "lightbulb.fill"
+        }
+    }
+}
+
+enum InsightImportance {
+    case low
+    case medium
+    case high
+
 // MARK: - Focus Intelligence Engine
 
 class FocusIntelligence: ObservableObject {
@@ -97,6 +120,26 @@ class FocusIntelligence: ObservableObject {
         }
         
         focusScore = min(max(score, 0), 100)
+    }
+    
+    func addInsight(text: String, category: InsightCategory = .tip, importance: InsightImportance = .medium) {
+        let type: FocusInsight.InsightType
+        switch category {
+        case .pattern: type = .positive
+        case .wellness: type = .tip
+        case .achievement: type = .positive
+        case .reflection: type = .neutral
+        }
+        
+        insights.append(FocusInsight(
+            id: UUID(),
+            title: category.rawValue.capitalized,
+            description: text,
+            type: type,
+            icon: category.icon,
+            date: Date()
+        ))
+        save()
     }
     
     private func generateInsights() {
