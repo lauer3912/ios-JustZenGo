@@ -23,6 +23,10 @@ struct FocusTimerApp: App {
         _ = ProjectManager.shared
         _ = AICoach.shared
         _ = HealthIntegration.shared
+        _ = CalendarIntegration.shared
+        _ = LiveActivityManager.shared
+        _ = ThemeManager.shared
+        _ = TimerManager.shared
         
         // Load saved data
         FocusModeManager.shared.load()
@@ -38,6 +42,8 @@ struct FocusTimerApp: App {
         FocusIntelligence.shared.load()
         ProjectManager.shared.load()
         AICoach.shared.load()
+        CalendarIntegration.shared.fetchTodayEvents()
+        ThemeManager.shared.load()
         
         // Initial analysis
         FocusIntelligence.shared.analyze()

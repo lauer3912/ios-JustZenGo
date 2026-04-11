@@ -5,6 +5,7 @@
 
 import ActivityKit
 import SwiftUI
+import Combine
 
 // MARK: - Focus Activity Attributes
 
@@ -27,13 +28,26 @@ class LiveActivityManager: ObservableObject {
     static let shared = LiveActivityManager()
     
     @Published var currentActivity: Activity<FocusActivityAttributes>?
+    @Published var isActivitySupported: Bool = false
+    
+    private var updateTimer: Timer?
+    
+    init() {
+        isActivitySupported = ActivityAuthorizationInfo().areActivitiesEnabled
+    }
     
     var isActivityActive: Bool {
         currentActivity != nil
     }
     
-    func startActivity(modeName: String, totalSessions: Int) {
-        guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
+    func startActivity(modeName: String, totalSessions: Int, initialTime: Int = 25 * 60) {
+        guard ActivityAuthorizationInfo().areActivitiesEnabled else {
+            print("Live Activities not enabled")
+            return
+        }
+        
+        // End any existing activity first
+        endActivity()
         
         let attributes = FocusActivityAttributes(
             startTime: Date(),
@@ -42,7 +56,7 @@ class LiveActivityManager: ObservableObject {
         
         let initialState = FocusActivityAttributes.ContentState(
             isWorkPhase: true,
-            timeRemaining: 25 * 60,
+            timeRemaining: initialTime,
             sessionName: "Focus Session",
             totalSessions: totalSessions,
             completedSessions: 0
@@ -55,8 +69,10 @@ class LiveActivityManager: ObservableObject {
                 pushType: nil
             )
             currentActivity = activity
+            isActivitySupported = true
         } catch {
             print("Failed to start Live Activity: \(error)")
+            isActivitySupported = false
         }
     }
     
@@ -106,10 +122,10 @@ class LiveActivityManager: ObservableObject {
     }
 }
 
-// MARK: - Live Activity Views
+// MARK: - Live Activity View (for Lock Screen)
 
 struct FocusLiveActivityView: View {
-    let context: ActivityViewContext<FocusActivityAttributes>
+    let state: FocusActivityAttributes.ContentState
     
     var body: some View {
         HStack(spacing: 16) {
@@ -120,28 +136,28 @@ struct FocusLiveActivityView: View {
                     .frame(width: 50, height: 50)
                 
                 Circle()
-                    .trim(from: 0, to: CGFloat(context.state.timeRemaining) / (25 * 60))
+                    .trim(from: 0, to: CGFloat(state.timeRemaining) / (25 * 60))
                     .stroke(
-                        context.state.isWorkPhase ? Color.red : Color.green,
+                        state.isWorkPhase ? Color.red : Color.green,
                         style: StrokeStyle(lineWidth: 4, lineCap: .round)
                     )
                     .frame(width: 50, height: 50)
                     .rotationEffect(.degrees(-90))
                 
-                Image(systemName: context.state.isWorkPhase ? "brain.head.profile" : "cup.and.saucer.fill")
+                Image(systemName: state.isWorkPhase ? "brain.head.profile" : "cup.and.saucer.fill")
                     .font(.system(size: 16))
-                    .foregroundColor(context.state.isWorkPhase ? .red : .green)
+                    .foregroundColor(state.isWorkPhase ? .red : .green)
             }
             
             VStack(alignment: .leading, spacing: 2) {
-                Text(context.state.isWorkPhase ? "Focus Time" : "Break")
+                Text(state.isWorkPhase ? "Focus Time" : "Break")
                     .font(.caption2)
                     .foregroundColor(.secondary)
                 
                 Text(timeString)
                     .font(.system(.title3, design: .monospaced).bold())
                 
-                Text(context.state.sessionName)
+                Text(state.sessionName)
                     .font(.caption2)
                     .foregroundColor(.secondary)
             }
@@ -150,7 +166,7 @@ struct FocusLiveActivityView: View {
             
             // Session progress
             VStack(spacing: 2) {
-                Text("\(context.state.completedSessions)/\(context.state.totalSessions)")
+                Text("\(state.completedSessions)/\(state.totalSessions)")
                     .font(.caption.bold())
                 
                 Text("sessions")
@@ -162,73 +178,8 @@ struct FocusLiveActivityView: View {
     }
     
     private var timeString: String {
-        let minutes = context.state.timeRemaining / 60
-        let seconds = context.state.timeRemaining % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
-}
-
-// MARK: - Dynamic Island Views
-
-struct FocusDynamicIslandExpandedView: View {
-    let context: ActivityViewContext<FocusActivityAttributes>
-    
-    var body: some View {
-        VStack(spacing: 12) {
-            HStack {
-                Image(systemName: context.state.isWorkPhase ? "brain.head.profile.fill" : "cup.and.saucer.fill")
-                    .foregroundColor(context.state.isWorkPhase ? .red : .green)
-                
-                Text(context.state.isWorkPhase ? "Focus Mode" : "Break Time")
-                    .font(.headline)
-                
-                Spacer()
-                
-                Text(timeString)
-                    .font(.system(.title, design: .monospaced).bold())
-            }
-            
-            ProgressView(value: Double(25 * 60 - context.state.timeRemaining) / Double(25 * 60))
-                .tint(context.state.isWorkPhase ? .red : .green)
-            
-            HStack {
-                Label(context.state.sessionName, systemImage: "tag.fill")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                
-                Spacer()
-                
-                Label("\(context.state.completedSessions)/\(context.state.totalSessions)", systemImage: "checkmark.circle.fill")
-                    .font(.caption)
-                    .foregroundColor(.green)
-            }
-        }
-        .padding()
-    }
-    
-    private var timeString: String {
-        let minutes = context.state.timeRemaining / 60
-        let seconds = context.state.timeRemaining % 60
-        return String(format: "%02d:%02d", minutes, seconds)
-    }
-}
-
-struct FocusDynamicIslandCompactView: View {
-    let context: ActivityViewContext<FocusActivityAttributes>
-    
-    var body: some View {
-        HStack(spacing: 4) {
-            Image(systemName: context.state.isWorkPhase ? "brain.head.profile" : "cup.and.saucer.fill")
-                .foregroundColor(context.state.isWorkPhase ? .red : .green)
-            
-            Text(timeString)
-                .font(.system(.caption, design: .monospaced).bold())
-        }
-    }
-    
-    private var timeString: String {
-        let minutes = context.state.timeRemaining / 60
-        let seconds = context.state.timeRemaining % 60
+        let minutes = state.timeRemaining / 60
+        let seconds = state.timeRemaining % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
 }
