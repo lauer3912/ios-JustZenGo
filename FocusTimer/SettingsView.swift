@@ -71,6 +71,47 @@ struct SettingsView: View {
                             )
                         }
                         
+                        SettingsSection(title: "Smart Reminders") {
+                            ToggleSettingRow(
+                                title: "Enable Reminders",
+                                isOn: $dataManager.settings.reminderEnabled
+                            )
+                            
+                            if dataManager.settings.reminderEnabled {
+                                DatePicker(
+                                    "Morning Reminder",
+                                    selection: Binding(
+                                        get: { dataManager.settings.morningReminderTime ?? defaultMorningTime() },
+                                        set: { dataManager.settings.morningReminderTime = $0 }
+                                    ),
+                                    displayedComponents: .hourAndMinute
+                                )
+                                .foregroundColor(.white)
+                                .datePickerStyle(.compact)
+                                
+                                DatePicker(
+                                    "Evening Reminder",
+                                    selection: Binding(
+                                        get: { dataManager.settings.eveningReminderTime ?? defaultEveningTime() },
+                                        set: { dataManager.settings.eveningReminderTime = $0 }
+                                    ),
+                                    displayedComponents: .hourAndMinute
+                                )
+                                .foregroundColor(.white)
+                                .datePickerStyle(.compact)
+                                
+                                ToggleSettingRow(
+                                    title: "Auto-Start Breaks",
+                                    isOn: $dataManager.settings.autoStartBreaks
+                                )
+                                
+                                ToggleSettingRow(
+                                    title: "Auto-Start Work",
+                                    isOn: $dataManager.settings.autoStartWork
+                                )
+                            }
+                        }
+                        
                         Spacer(minLength: 40)
                     }
                     .padding(.horizontal, 16)
@@ -233,6 +274,22 @@ struct ToggleSettingRow: View {
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
     }
+}
+
+// MARK: - Helper Functions
+
+private func defaultMorningTime() -> Date {
+    var components = DateComponents()
+    components.hour = 9
+    components.minute = 0
+    return Calendar.current.date(from: components) ?? Date()
+}
+
+private func defaultEveningTime() -> Date {
+    var components = DateComponents()
+    components.hour = 20
+    components.minute = 0
+    return Calendar.current.date(from: components) ?? Date()
 }
 
 #Preview {
