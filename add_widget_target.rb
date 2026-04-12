@@ -12,16 +12,12 @@ if project.targets.any? { |t| t.name == 'FocusTimerWidget' }
     exit 0
 end
 
-# Get main target and its build configuration list
-main_target = project.targets.find { |t| t.name == 'FocusTimer' }
-raise "Main target not found!" unless main_target
-
 # Get the widget extension path
 widget_path = File.join(__dir__, 'FocusTimerWidget')
 widget_group = project.main_group.find_subpath(File.join('FocusTimerWidget'), true)
 
-# Create the target
-widget_target = project.new_target(:app_extension, 'FocusTimerWidget', :ios, '26.2', {:cFBundleShortVersionString => '1.0', :cFBundleVersion => '1'})
+# Create the target using the correct API
+widget_target = project.new_target(:app_extension, 'FocusTimerWidget', :ios)
 
 # Set product bundle identifier
 widget_target.product_bundle_identifier = 'com.ggsheng.FocusTimer.widget'
@@ -37,13 +33,23 @@ end
 info_plist_path = File.join(widget_path, 'Info.plist')
 info_plist_ref = widget_group.new_file(info_plist_path)
 widget_target.info_plist = info_plist_ref
-widget_target.infoplist_path = info_plist_path
 
-# Set deployment target to match main app
+# Set deployment target
 widget_target.deployment_target = '26.2'
 
-# Add to build phases - embed in main app
-main_target.frameworks_build_phase.add_file_reference(project.main_group.find_subpath('FocusTimerWidget', true).resolve)
+# Set build settings
+widget_target.build_configurations.each do |config|
+    config.build_settings['INFOPLIST_FILE'] = 'FocusTimerWidget/Info.plist'
+    config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = 'com.ggsheng.FocusTimer.widget'
+    config.build_settings['SKIP_INSTALL'] = 'YES'
+end
+
+# Add widget extension to embedded binaries in main target
+main_target = project.targets.find { |t| t.name == 'FocusTimer' }
+if main_target
+    widget_ref = widget_group
+    main_target.add_dependency(widget_target)
+end
 
 # Save the project
 project.save
