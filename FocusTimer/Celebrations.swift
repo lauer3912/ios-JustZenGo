@@ -50,11 +50,11 @@ enum MilestoneType {
     
     var icon: String {
         switch self {
-        case .sessionCompleted: return "checkmark.circle.fill"
-        case .streakMilestone: return "flame.fill"
+        case .sessionCompleted: return AppleSymbols.checkmarkCircleFill
+        case .streakMilestone: return AppleSymbols.flameFill
         case .levelUp: return "arrow.up.circle.fill"
-        case .achievementUnlocked: return "star.fill"
-        case .dailyGoal: return "target"
+        case .achievementUnlocked: return AppleSymbols.starFill
+        case .dailyGoal: return AppleSymbols.target
         case .weeklyGoal: return "calendar"
         case .totalHours: return "clock.fill"
         case .totalSessions: return "number.circle.fill"
@@ -64,15 +64,15 @@ enum MilestoneType {
     
     var color: Color {
         switch self {
-        case .sessionCompleted: return Color(hex: "4ECB71")
-        case .streakMilestone: return Color(hex: "FF9500")
-        case .levelUp: return Color(hex: "AF52DE")
-        case .achievementUnlocked: return Color(hex: "FFD60A")
-        case .dailyGoal: return Color(hex: "4ECB71")
-        case .weeklyGoal: return Color(hex: "5AC8FA")
-        case .totalHours: return Color(hex: "FF9500")
-        case .totalSessions: return Color(hex: "64D2FF")
-        case .firstOfDay: return Color(hex: "FFD60A")
+        case .sessionCompleted: return AppleDesign.Colors.focusGreen
+        case .streakMilestone: return AppleDesign.Colors.focusOrange
+        case .levelUp: return AppleDesign.Colors.focusPurple
+        case .achievementUnlocked: return AppleDesign.Colors.focusYellow
+        case .dailyGoal: return AppleDesign.Colors.focusGreen
+        case .weeklyGoal: return AppleDesign.Colors.focusCyan
+        case .totalHours: return AppleDesign.Colors.focusOrange
+        case .totalSessions: return AppleDesign.Colors.focusCyan
+        case .firstOfDay: return AppleDesign.Colors.focusYellow
         }
     }
 }
@@ -187,32 +187,32 @@ struct CelebrationOverlay: View {
             Color.black.opacity(0.6)
                 .ignoresSafeArea()
                 .onTapGesture {
-                    withAnimation {
+                    withAnimation(AppleDesign.Animation.bouncy) {
                         isShowing = false
                     }
                 }
             
-            VStack(spacing: 20) {
+            VStack(spacing: AppleDesign.Spacing.lg) {
                 Image(systemName: milestone.icon)
                     .font(.system(size: 64))
                     .foregroundColor(milestone.color)
                     .shadow(color: milestone.color.opacity(0.5), radius: 20)
                     .scaleEffect(isShowing ? 1 : 0.5)
-                    .animation(.spring(response: 0.5, dampingFraction: 0.6), value: isShowing)
+                    .animation(AppleDesign.Animation.bouncy, value: isShowing)
                 
                 Text(milestone.title)
-                    .font(.system(size: 28, weight: .bold))
-                    .foregroundColor(.white)
+                    .font(AppleDesign.Typography.title1)
+                    .foregroundColor(AppleDesign.Colors.textPrimary)
                     .multilineTextAlignment(.center)
                 
                 Text(milestone.subtitle)
-                    .font(.system(size: 16))
-                    .foregroundColor(Color(hex: "8E8E93"))
+                    .font(AppleDesign.Typography.body)
+                    .foregroundColor(AppleDesign.Colors.textSecondary)
             }
-            .padding(40)
+            .padding(AppleDesign.Spacing.xxxl)
             .background(
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(Color(hex: "2C2C2E"))
+                RoundedRectangle(cornerRadius: AppleDesign.Radius.xxlarge)
+                    .fill(AppleDesign.Colors.backgroundSecondary)
                     .shadow(color: milestone.color.opacity(0.3), radius: 30)
             )
         }

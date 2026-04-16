@@ -920,11 +920,11 @@ struct LabelPickerView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "1C1C1E")
+                AppleDesign.Colors.background
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    VStack(spacing: 8) {
+                    VStack(spacing: AppleDesign.Spacing.xs) {
                         ForEach(labelManager.labels) { label in
                             Button(action: {
                                 labelManager.selectLabel(label)
@@ -935,20 +935,20 @@ struct LabelPickerView: View {
                                         .fill(Color(hex: label.color))
                                         .frame(width: 12, height: 12)
                                     Text(label.name)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(AppleDesign.Colors.textPrimary)
                                     Spacer()
                                     if label.id == labelManager.selectedLabel?.id {
                                         Image(systemName: "checkmark")
-                                            .foregroundColor(Color(hex: "4ECB71"))
+                                            .foregroundColor(AppleDesign.Colors.focusGreen)
                                     }
                                 }
-                                .padding(12)
-                                .background(Color(hex: "2C2C2E"))
-                                .cornerRadius(8)
+                                .padding(AppleDesign.Spacing.sm)
+                                .background(AppleDesign.Colors.backgroundSecondary)
+                                .cornerRadius(AppleDesign.Radius.small)
                             }
                         }
                     }
-                    .padding()
+                    .padding(AppleDesign.Spacing.md)
                 }
             }
             .navigationTitle("Session Label")
@@ -959,11 +959,11 @@ struct LabelPickerView: View {
                         labelManager.selectLabel(nil)
                         dismiss()
                     }
-                    .foregroundColor(Color(hex: "8E8E93"))
+                    .foregroundColor(AppleDesign.Colors.textSecondary)
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
         }
@@ -1015,57 +1015,57 @@ struct ProfileView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "1C1C1E")
+                AppleDesign.Colors.background
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    VStack(spacing: 24) {
+                    VStack(spacing: AppleDesign.Spacing.lg) {
                         // Level card
-                        VStack(spacing: 16) {
+                        VStack(spacing: AppleDesign.Spacing.md) {
                             ZStack {
                                 Circle()
-                                    .stroke(Color(hex: "AF52DE").opacity(0.3), lineWidth: 8)
+                                    .stroke(AppleDesign.Colors.focusPurple.opacity(0.3), lineWidth: 8)
                                     .frame(width: 120, height: 120)
                                 
                                 Circle()
                                     .trim(from: 0, to: levelingSystem.progressToNextLevel)
-                                    .stroke(Color(hex: "AF52DE"), style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                                    .stroke(AppleDesign.Colors.focusPurple, style: StrokeStyle(lineWidth: 8, lineCap: .round))
                                     .frame(width: 120, height: 120)
                                     .rotationEffect(.degrees(-90))
                                 
-                                VStack(spacing: 4) {
+                                VStack(spacing: AppleDesign.Spacing.xxs) {
                                     Text("Lv.\(levelingSystem.currentLevel)")
-                                        .font(.system(size: 32, weight: .bold))
-                                        .foregroundColor(.white)
+                                        .font(AppleDesign.Typography.title1)
+                                        .foregroundColor(AppleDesign.Colors.textPrimary)
                                     
                                     Text(levelingSystem.levelTitle)
-                                        .font(.system(size: 12))
-                                        .foregroundColor(Color(hex: "AF52DE"))
+                                        .font(AppleDesign.Typography.caption1)
+                                        .foregroundColor(AppleDesign.Colors.focusPurple)
                                 }
                             }
                             
                             Text("\(levelingSystem.currentXP) / \(levelingSystem.xpForNextLevel) XP")
-                                .font(.system(size: 14))
-                                .foregroundColor(Color(hex: "8E8E93"))
+                                .font(AppleDesign.Typography.footnote)
+                                .foregroundColor(AppleDesign.Colors.textSecondary)
                         }
-                        .padding(24)
-                        .background(Color(hex: "2C2C2E"))
-                        .cornerRadius(20)
+                        .padding(AppleDesign.Spacing.xxl)
+                        .background(AppleDesign.Colors.backgroundSecondary)
+                        .cornerRadius(AppleDesign.Radius.xxlarge)
                         
                         // Stats grid
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
-                            ProfileStatCard(title: "Total XP", value: "\(levelingSystem.totalXPEarned)", icon: "sparkles", color: .yellow)
-                            ProfileStatCard(title: "Focus Coins", value: "\(coinManager.coins)", icon: "bitcoinsign.circle.fill", color: .orange)
-                            ProfileStatCard(title: "Achievements", value: "\(achievementManager.totalUnlocked)/\(achievementManager.badges.count)", icon: "trophy.fill", color: .purple)
-                            ProfileStatCard(title: "Current Streak", value: "\(dataManager.statistics.currentStreak) days", icon: "flame.fill", color: .red)
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppleDesign.Spacing.md) {
+                            ProfileStatCard(title: "Total XP", value: "\(levelingSystem.totalXPEarned)", icon: AppleSymbols.sparkles, color: AppleDesign.Colors.focusYellow)
+                            ProfileStatCard(title: "Focus Coins", value: "\(coinManager.coins)", icon: AppleSymbols.bitcoinsignCircleFill, color: AppleDesign.Colors.focusOrange)
+                            ProfileStatCard(title: "Achievements", value: "\(achievementManager.totalUnlocked)/\(achievementManager.badges.count)", icon: AppleSymbols.trophyFill, color: AppleDesign.Colors.focusPurple)
+                            ProfileStatCard(title: "Current Streak", value: "\(dataManager.statistics.currentStreak) days", icon: AppleSymbols.flameFill, color: AppleDesign.Colors.focusRed)
                         }
                         
                         // Streak heatmap
                         StreakHeatmapView()
                         
-                        Spacer(minLength: 40)
+                        Spacer(minLength: AppleDesign.Spacing.xxxl)
                     }
-                    .padding()
+                    .padding(AppleDesign.Spacing.md)
                 }
             }
             .navigationTitle("Profile")
@@ -1073,7 +1073,7 @@ struct ProfileView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
         }
@@ -1088,23 +1088,23 @@ struct ProfileStatCard: View {
     let color: Color
     
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: AppleDesign.Spacing.sm) {
             Image(systemName: icon)
                 .font(.system(size: 24))
                 .foregroundColor(color)
             
             Text(value)
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(.white)
+                .font(AppleDesign.Typography.title3)
+                .foregroundColor(AppleDesign.Colors.textPrimary)
             
             Text(title)
-                .font(.system(size: 12))
-                .foregroundColor(Color(hex: "8E8E93"))
+                .font(AppleDesign.Typography.caption1)
+                .foregroundColor(AppleDesign.Colors.textSecondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(16)
-        .background(Color(hex: "2C2C2E"))
-        .cornerRadius(16)
+        .padding(AppleDesign.Spacing.md)
+        .background(AppleDesign.Colors.backgroundSecondary)
+        .cornerRadius(AppleDesign.Radius.large)
     }
 }
 
@@ -1119,51 +1119,51 @@ struct FocusShopView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "1C1C1E")
+                AppleDesign.Colors.background
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
                     // Coin balance
                     HStack {
-                        Image(systemName: "bitcoinsign.circle.fill")
+                        Image(systemName: AppleSymbols.bitcoinsignCircleFill)
                             .font(.system(size: 24))
-                            .foregroundColor(Color(hex: "FF9500"))
+                            .foregroundColor(AppleDesign.Colors.focusOrange)
                         
                         Text("\(coinManager.coins)")
-                            .font(.system(size: 24, weight: .bold))
-                            .foregroundColor(.white)
+                            .font(AppleDesign.Typography.title2)
+                            .foregroundColor(AppleDesign.Colors.textPrimary)
                         
                         Spacer()
                         
                         Text("Total earned: \(coinManager.totalEarned)")
-                            .font(.system(size: 12))
-                            .foregroundColor(Color(hex: "8E8E93"))
+                            .font(AppleDesign.Typography.caption1)
+                            .foregroundColor(AppleDesign.Colors.textSecondary)
                     }
-                    .padding()
-                    .background(Color(hex: "2C2C2E"))
+                    .padding(AppleDesign.Spacing.md)
+                    .background(AppleDesign.Colors.backgroundSecondary)
                     
                     // Category picker
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
+                        HStack(spacing: AppleDesign.Spacing.sm) {
                             ForEach([FocusCoinItem.ItemCategory.theme, .sound, .accessory, .powerup], id: \.self) { category in
                                 Button(action: { selectedCategory = category }) {
                                     Text(category.rawValue.capitalized)
-                                        .font(.system(size: 14, weight: .medium))
-                                        .foregroundColor(selectedCategory == category ? .white : Color(hex: "8E8E93"))
-                                        .padding(.horizontal, 16)
-                                        .padding(.vertical, 8)
-                                        .background(selectedCategory == category ? Color(hex: "FF9500") : Color(hex: "3A3A3C"))
-                                        .cornerRadius(20)
+                                        .font(AppleDesign.Typography.caption1Medium)
+                                        .foregroundColor(selectedCategory == category ? .white : AppleDesign.Colors.textSecondary)
+                                        .padding(.horizontal, AppleDesign.Spacing.md)
+                                        .padding(.vertical, AppleDesign.Spacing.xs)
+                                        .background(selectedCategory == category ? AppleDesign.Colors.focusOrange : AppleDesign.Colors.backgroundElevated)
+                                        .cornerRadius(AppleDesign.Radius.pill)
                                 }
                             }
                         }
-                        .padding(.horizontal)
+                        .padding(.horizontal, AppleDesign.Spacing.md)
                     }
-                    .padding(.vertical, 12)
+                    .padding(.vertical, AppleDesign.Spacing.sm)
                     
                     // Items grid
                     ScrollView {
-                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppleDesign.Spacing.sm) {
                             ForEach(itemsForCategory) { item in
                                 ShopItemCard(item: item, isOwned: coinManager.isOwned(item.id)) {
                                     if coinManager.spendCoins(item.price, for: item.id) {
@@ -1172,7 +1172,7 @@ struct FocusShopView: View {
                                 }
                             }
                         }
-                        .padding()
+                        .padding(AppleDesign.Spacing.md)
                     }
                 }
             }
@@ -1181,7 +1181,7 @@ struct FocusShopView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
         }
@@ -1199,52 +1199,52 @@ struct ShopItemCard: View {
     let onPurchase: () -> Void
     
     var body: some View {
-        VStack(spacing: 12) {
+        VStack(spacing: AppleDesign.Spacing.sm) {
             Image(systemName: item.icon)
                 .font(.system(size: 32))
-                .foregroundColor(isOwned ? Color(hex: "4ECB71") : Color(hex: "FF9500"))
+                .foregroundColor(isOwned ? AppleDesign.Colors.focusGreen : AppleDesign.Colors.focusOrange)
                 .frame(width: 60, height: 60)
-                .background(Color(hex: "3A3A3C"))
-                .cornerRadius(12)
+                .background(AppleDesign.Colors.backgroundElevated)
+                .cornerRadius(AppleDesign.Radius.medium)
             
             Text(item.name)
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white)
+                .font(AppleDesign.Typography.subheadlineMedium)
+                .foregroundColor(AppleDesign.Colors.textPrimary)
                 .multilineTextAlignment(.center)
             
             Text(item.description)
-                .font(.system(size: 10))
-                .foregroundColor(Color(hex: "8E8E93"))
+                .font(AppleDesign.Typography.caption2)
+                .foregroundColor(AppleDesign.Colors.textSecondary)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
             
             if isOwned {
                 Text("Owned")
-                    .font(.system(size: 12, weight: .bold))
-                    .foregroundColor(Color(hex: "4ECB71"))
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color(hex: "4ECB71").opacity(0.2))
-                    .cornerRadius(12)
+                    .font(AppleDesign.Typography.caption1Medium)
+                    .foregroundColor(AppleDesign.Colors.focusGreen)
+                    .padding(.horizontal, AppleDesign.Spacing.sm)
+                    .padding(.vertical, AppleDesign.Spacing.xxs)
+                    .background(AppleDesign.Colors.focusGreen.opacity(0.2))
+                    .cornerRadius(AppleDesign.Radius.small)
             } else {
                 Button(action: onPurchase) {
-                    HStack(spacing: 4) {
-                        Image(systemName: "bitcoinsign.circle.fill")
+                    HStack(spacing: AppleDesign.Spacing.xxs) {
+                        Image(systemName: AppleSymbols.bitcoinsignCircleFill)
                             .font(.system(size: 12))
                         Text("\(item.price)")
-                            .font(.system(size: 12, weight: .bold))
+                            .font(AppleDesign.Typography.caption1Medium)
                     }
                     .foregroundColor(.white)
-                    .padding(.horizontal, 12)
-                    .padding(.vertical, 6)
-                    .background(Color(hex: "FF9500"))
-                    .cornerRadius(12)
+                    .padding(.horizontal, AppleDesign.Spacing.sm)
+                    .padding(.vertical, AppleDesign.Spacing.xxs)
+                    .background(AppleDesign.Colors.focusOrange)
+                    .cornerRadius(AppleDesign.Radius.small)
                 }
             }
         }
-        .padding()
-        .background(Color(hex: "2C2C2E"))
-        .cornerRadius(16)
+        .padding(AppleDesign.Spacing.md)
+        .background(AppleDesign.Colors.backgroundSecondary)
+        .cornerRadius(AppleDesign.Radius.large)
     }
 }
 
@@ -1259,20 +1259,20 @@ struct AchievementsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "1C1C1E")
+                AppleDesign.Colors.background
                     .ignoresSafeArea()
                 
                 VStack(spacing: 0) {
                     // Progress header
                     HStack {
-                        VStack(alignment: .leading, spacing: 4) {
+                        VStack(alignment: .leading, spacing: AppleDesign.Spacing.xxs) {
                             Text("\(achievementManager.totalUnlocked) / \(achievementManager.badges.count)")
-                                .font(.system(size: 24, weight: .bold))
-                                .foregroundColor(.white)
+                                .font(AppleDesign.Typography.title1)
+                                .foregroundColor(AppleDesign.Colors.textPrimary)
                             
                             Text("Achievements Unlocked")
-                                .font(.system(size: 12))
-                                .foregroundColor(Color(hex: "8E8E93"))
+                                .font(AppleDesign.Typography.caption1)
+                                .foregroundColor(AppleDesign.Colors.textSecondary)
                         }
                         
                         Spacer()
@@ -1280,40 +1280,40 @@ struct AchievementsView: View {
                         CircularProgressView(progress: Double(achievementManager.totalUnlocked) / Double(max(achievementManager.badges.count, 1)))
                             .frame(width: 50, height: 50)
                     }
-                    .padding()
-                    .background(Color(hex: "2C2C2E"))
+                    .padding(AppleDesign.Spacing.md)
+                    .background(AppleDesign.Colors.backgroundSecondary)
                     
                     // Category picker
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
+                        HStack(spacing: AppleDesign.Spacing.sm) {
                             ForEach(AchievementBadge.AchievementCategory.allCases, id: \.self) { category in
                                 Button(action: { selectedCategory = category }) {
-                                    HStack(spacing: 6) {
+                                    HStack(spacing: AppleDesign.Spacing.xxs) {
                                         Image(systemName: category.icon)
                                             .font(.system(size: 12))
                                         Text(category.displayName)
-                                            .font(.system(size: 12, weight: .medium))
+                                            .font(AppleDesign.Typography.caption1Medium)
                                     }
-                                    .foregroundColor(selectedCategory == category ? .white : Color(hex: "8E8E93"))
-                                    .padding(.horizontal, 12)
-                                    .padding(.vertical, 6)
-                                    .background(selectedCategory == category ? Color(hex: "FFD60A") : Color(hex: "3A3A3C"))
-                                    .cornerRadius(16)
+                                    .foregroundColor(selectedCategory == category ? AppleDesign.Colors.textOnLight : AppleDesign.Colors.textSecondary)
+                                    .padding(.horizontal, AppleDesign.Spacing.sm)
+                                    .padding(.vertical, AppleDesign.Spacing.xxs)
+                                    .background(selectedCategory == category ? AppleDesign.Colors.focusYellow : AppleDesign.Colors.backgroundElevated)
+                                    .cornerRadius(AppleDesign.Radius.pill)
                                 }
                             }
                         }
-                        .padding(.horizontal)
+                        .padding(.horizontal, AppleDesign.Spacing.md)
                     }
-                    .padding(.vertical, 12)
+                    .padding(.vertical, AppleDesign.Spacing.sm)
                     
                     // Badges list
                     ScrollView {
-                        LazyVStack(spacing: 8) {
+                        LazyVStack(spacing: AppleDesign.Spacing.xs) {
                             ForEach(achievementManager.getBadgesByCategory(selectedCategory)) { badge in
                                 AchievementBadgeRow(badge: badge)
                             }
                         }
-                        .padding()
+                        .padding(AppleDesign.Spacing.md)
                     }
                 }
             }
@@ -1322,7 +1322,7 @@ struct AchievementsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
         }
@@ -1336,16 +1336,16 @@ struct CircularProgressView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(Color(hex: "3A3A3C"), lineWidth: 6)
+                .stroke(AppleDesign.Colors.backgroundElevated, lineWidth: 6)
             
             Circle()
                 .trim(from: 0, to: progress)
-                .stroke(Color(hex: "FFD60A"), style: StrokeStyle(lineWidth: 6, lineCap: .round))
+                .stroke(AppleDesign.Colors.focusYellow, style: StrokeStyle(lineWidth: 6, lineCap: .round))
                 .rotationEffect(.degrees(-90))
             
             Text("\(Int(progress * 100))%")
-                .font(.system(size: 12, weight: .bold))
-                .foregroundColor(.white)
+                .font(AppleDesign.Typography.caption1Medium)
+                .foregroundColor(AppleDesign.Colors.textPrimary)
         }
     }
 }
@@ -1354,47 +1354,47 @@ struct AchievementBadgeRow: View {
     let badge: AchievementBadge
     
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: AppleDesign.Spacing.md) {
             ZStack {
                 Circle()
-                    .fill(badge.isUnlocked ? Color(hex: "FFD60A").opacity(0.2) : Color(hex: "3A3A3C"))
+                    .fill(badge.isUnlocked ? AppleDesign.Colors.focusYellow.opacity(0.2) : AppleDesign.Colors.backgroundElevated)
                     .frame(width: 50, height: 50)
                 
                 Image(systemName: badge.icon)
                     .font(.system(size: 20))
-                    .foregroundColor(badge.isUnlocked ? Color(hex: "FFD60A") : Color(hex: "8E8E93"))
+                    .foregroundColor(badge.isUnlocked ? AppleDesign.Colors.focusYellow : AppleDesign.Colors.textSecondary)
             }
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: AppleDesign.Spacing.xxs) {
                 Text(badge.name)
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(badge.isUnlocked ? .white : Color(hex: "8E8E93"))
+                    .font(AppleDesign.Typography.headline)
+                    .foregroundColor(badge.isUnlocked ? AppleDesign.Colors.textPrimary : AppleDesign.Colors.textSecondary)
                 
                 Text(badge.description)
-                    .font(.system(size: 12))
-                    .foregroundColor(Color(hex: "8E8E93"))
+                    .font(AppleDesign.Typography.caption1)
+                    .foregroundColor(AppleDesign.Colors.textSecondary)
                 
                 if let date = badge.unlockedDate, badge.isUnlocked {
                     Text("Unlocked \(formattedDate(date))")
-                        .font(.system(size: 10))
-                        .foregroundColor(Color(hex: "4ECB71"))
+                        .font(AppleDesign.Typography.caption2)
+                        .foregroundColor(AppleDesign.Colors.focusGreen)
                 }
             }
             
             Spacer()
             
             if badge.isUnlocked {
-                Image(systemName: "checkmark.circle.fill")
-                    .foregroundColor(Color(hex: "4ECB71"))
+                Image(systemName: AppleSymbols.checkmarkCircleFill)
+                    .foregroundColor(AppleDesign.Colors.focusGreen)
             } else {
                 Text("\(badge.requirement)")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(Color(hex: "8E8E93"))
+                    .font(AppleDesign.Typography.headline)
+                    .foregroundColor(AppleDesign.Colors.textSecondary)
             }
         }
-        .padding()
-        .background(Color(hex: "2C2C2E"))
-        .cornerRadius(12)
+        .padding(AppleDesign.Spacing.md)
+        .background(AppleDesign.Colors.backgroundSecondary)
+        .cornerRadius(AppleDesign.Radius.large)
         .opacity(badge.isUnlocked ? 1 : 0.7)
     }
     
@@ -1419,27 +1419,27 @@ struct ProjectPickerView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "1C1C1E")
+                AppleDesign.Colors.background
                     .ignoresSafeArea()
                 
-                VStack(spacing: 20) {
+                VStack(spacing: AppleDesign.Spacing.lg) {
                     // Add new project
-                    VStack(spacing: 12) {
+                    VStack(spacing: AppleDesign.Spacing.sm) {
                         TextField("Project Name", text: $newProjectName)
                             .textFieldStyle(.plain)
-                            .padding(12)
-                            .background(Color(hex: "3A3A3C"))
-                            .cornerRadius(8)
-                            .foregroundColor(.white)
+                            .padding(AppleDesign.Spacing.sm)
+                            .background(AppleDesign.Colors.backgroundElevated)
+                            .cornerRadius(AppleDesign.Radius.small)
+                            .foregroundColor(AppleDesign.Colors.textPrimary)
                         
-                        HStack(spacing: 8) {
+                        HStack(spacing: AppleDesign.Spacing.xs) {
                             ForEach(colors, id: \.self) { color in
                                 Circle()
                                     .fill(Color(hex: color))
                                     .frame(width: 30, height: 30)
                                     .overlay(
                                         Circle()
-                                            .stroke(selectedColor == color ? Color.white : Color.clear, lineWidth: 2)
+                                            .stroke(selectedColor == color ? AppleDesign.Colors.textPrimary : Color.clear, lineWidth: 2)
                                     )
                                     .onTapGesture {
                                         selectedColor = color
@@ -1449,29 +1449,29 @@ struct ProjectPickerView: View {
                         
                         Button(action: createProject) {
                             Text("Create Project")
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(AppleDesign.Typography.subheadlineMedium)
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
-                                .padding(12)
-                                .background(Color(hex: "4ECB71"))
-                                .cornerRadius(8)
+                                .padding(AppleDesign.Spacing.sm)
+                                .background(AppleDesign.Colors.focusGreen)
+                                .cornerRadius(AppleDesign.Radius.small)
                         }
                         .disabled(newProjectName.isEmpty)
                     }
-                    .padding()
-                    .background(Color(hex: "2C2C2E"))
-                    .cornerRadius(16)
+                    .padding(AppleDesign.Spacing.md)
+                    .background(AppleDesign.Colors.backgroundSecondary)
+                    .cornerRadius(AppleDesign.Radius.large)
                     
                     // Project list
                     if projectManager.projects.isEmpty {
-                        VStack(spacing: 12) {
-                            Image(systemName: "folder")
+                        VStack(spacing: AppleDesign.Spacing.sm) {
+                            Image(systemName: AppleSymbols.folderFill)
                                 .font(.system(size: 48))
-                                .foregroundColor(Color(hex: "3A3A3C"))
+                                .foregroundColor(AppleDesign.Colors.backgroundElevated)
                             Text("No projects yet")
-                                .foregroundColor(Color(hex: "8E8E93"))
+                                .foregroundColor(AppleDesign.Colors.textSecondary)
                         }
-                        .padding(.vertical, 40)
+                        .padding(.vertical, AppleDesign.Spacing.giant)
                     } else {
                         ForEach(projectManager.projects.filter { !$0.isArchived }) { project in
                             ProjectRow(
@@ -1490,14 +1490,14 @@ struct ProjectPickerView: View {
                     
                     Spacer()
                 }
-                .padding()
+                .padding(AppleDesign.Spacing.md)
             }
             .navigationTitle("Projects")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
         }
@@ -1518,38 +1518,38 @@ struct ProjectRow: View {
     
     var body: some View {
         Button(action: onSelect) {
-            HStack(spacing: 16) {
+            HStack(spacing: AppleDesign.Spacing.md) {
                 Circle()
                     .fill(Color(hex: project.color))
                     .frame(width: 12, height: 12)
                 
                 VStack(alignment: .leading, spacing: 2) {
                     Text(project.name)
-                        .font(.system(size: 16, weight: .medium))
-                        .foregroundColor(.white)
+                        .font(AppleDesign.Typography.headlineMedium)
+                        .foregroundColor(AppleDesign.Colors.textPrimary)
                     
                     Text("\(project.sessions) sessions • \(project.formattedTime)")
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(hex: "8E8E93"))
+                        .font(AppleDesign.Typography.caption1)
+                        .foregroundColor(AppleDesign.Colors.textSecondary)
                 }
                 
                 Spacer()
                 
                 if isActive {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(Color(hex: "4ECB71"))
+                    Image(systemName: AppleSymbols.checkmarkCircleFill)
+                        .foregroundColor(AppleDesign.Colors.focusGreen)
                 }
                 
                 Button(action: onDelete) {
                     Image(systemName: "trash")
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
-            .padding(16)
-            .background(isActive ? Color(hex: project.color).opacity(0.15) : Color(hex: "2C2C2E"))
-            .cornerRadius(12)
+            .padding(AppleDesign.Spacing.md)
+            .background(isActive ? Color(hex: project.color).opacity(0.15) : AppleDesign.Colors.backgroundSecondary)
+            .cornerRadius(AppleDesign.Radius.large)
             .overlay(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: AppleDesign.Radius.large)
                     .stroke(isActive ? Color(hex: project.color).opacity(0.5) : Color.clear, lineWidth: 2)
             )
         }
