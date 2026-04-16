@@ -40,7 +40,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color(hex: modeManager.getCurrentModeSettings().work == 90 * 60 ? "2C1A3D" : (modeManager.getCurrentModeSettings().work == 50 * 60 ? "1C1C2E" : "1C1C1E"))
+            AppleDesign.Colors.background
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
@@ -85,7 +85,7 @@ struct ContentView: View {
                 // Streak indicator
                 if dataManager.statistics.currentStreak > 0 {
                     streakIndicator
-                        .padding(.bottom, 32)
+                        .padding(.bottom, AppleDesign.Spacing.xxl)
                 } else {
                     Spacer().frame(height: 52)
                 }
@@ -128,20 +128,20 @@ struct ContentView: View {
     // MARK: - Top Bar
     
     private var topBar: some View {
-        HStack {
+        HStack(spacing: AppleDesign.Spacing.sm) {
             // Mode selector button
             Button(action: { showModeSelector = true }) {
                 HStack(spacing: 6) {
                     Image(systemName: modeManager.currentMode.icon)
                         .font(.system(size: 14))
                     Text(modeManager.currentMode.displayName)
-                        .font(.system(size: 14, weight: .medium))
+                        .font(AppleDesign.Typography.caption1Medium)
                 }
-                .foregroundColor(Color(hex: modeManager.currentMode.accentColor))
-                .padding(.horizontal, 12)
-                .padding(.vertical, 6)
-                .background(Color(hex: modeManager.currentMode.accentColor).opacity(0.2))
-                .cornerRadius(16)
+                .foregroundColor(modeManager.currentMode.appleColor)
+                .padding(.horizontal, AppleDesign.Spacing.sm)
+                .padding(.vertical, AppleDesign.Spacing.xxs)
+                .background(modeManager.currentMode.appleColor.opacity(0.2))
+                .cornerRadius(AppleDesign.Radius.pill)
             }
             
             Spacer()
@@ -150,158 +150,164 @@ struct ContentView: View {
             if let label = labelManager.selectedLabel {
                 Button(action: { showLabelPicker = true }) {
                     Text(label.name)
-                        .font(.system(size: 12, weight: .medium))
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 4)
+                        .font(AppleDesign.Typography.caption1Medium)
+                        .foregroundColor(AppleDesign.Colors.textPrimary)
+                        .padding(.horizontal, AppleDesign.Spacing.xs)
+                        .padding(.vertical, AppleDesign.Spacing.xxs)
                         .background(Color(hex: label.color).opacity(0.3))
-                        .cornerRadius(8)
+                        .cornerRadius(AppleDesign.Radius.small)
                 }
             } else {
                 Button(action: { showLabelPicker = true }) {
-                    Image(systemName: "tag.fill")
+                    Image(systemName: AppleSymbols.tagFill)
                         .font(.system(size: 14))
-                        .foregroundColor(Color(hex: "8E8E93"))
+                        .foregroundColor(AppleDesign.Colors.textSecondary)
                 }
             }
             
             Spacer()
             
             // Daily goal indicator
-            HStack(spacing: 4) {
-                Image(systemName: "target")
+            HStack(spacing: AppleDesign.Spacing.xxs) {
+                Image(systemName: AppleSymbols.target)
                     .font(.system(size: 14))
                 Text("\(dataManager.statistics.todaySessions)/\(dataManager.settings.dailyGoal)")
-                    .font(.system(size: 14, weight: .medium))
+                    .font(AppleDesign.Typography.caption1Medium)
             }
-            .foregroundColor(dataManager.statistics.todaySessions >= dataManager.settings.dailyGoal ? Color(hex: "4ECB71") : Color(hex: "8E8E93"))
+            .foregroundColor(dataManager.statistics.todaySessions >= dataManager.settings.dailyGoal ? AppleDesign.Colors.focusGreen : AppleDesign.Colors.textSecondary)
             
             Spacer()
             
-            Button(action: { showAchievements = true }) {
-                HStack(spacing: 4) {
-                    Image(systemName: "trophy.fill")
-                        .font(.system(size: 14))
-                    Text("\(achievementManager.totalUnlocked)")
-                        .font(.system(size: 12, weight: .bold))
+            // Stats buttons group
+            HStack(spacing: AppleDesign.Spacing.xxs) {
+                Button(action: { showAchievements = true }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: AppleSymbols.trophyFill)
+                            .font(.system(size: 12))
+                        Text("\(achievementManager.totalUnlocked)")
+                            .font(AppleDesign.Typography.caption1Medium)
+                    }
+                    .foregroundColor(AppleDesign.Colors.focusYellow)
+                    .padding(.horizontal, AppleDesign.Spacing.xs)
+                    .padding(.vertical, AppleDesign.Spacing.xxs)
+                    .background(AppleDesign.Colors.focusYellow.opacity(0.2))
+                    .cornerRadius(AppleDesign.Radius.small)
                 }
-                .foregroundColor(Color(hex: "FFD60A"))
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color(hex: "FFD60A").opacity(0.2))
-                .cornerRadius(12)
-            }
-            
-            Button(action: { showShop = true }) {
-                HStack(spacing: 4) {
-                    Image(systemName: "bitcoinsign.circle.fill")
-                        .font(.system(size: 14))
-                    Text("\(coinManager.coins)")
-                        .font(.system(size: 12, weight: .bold))
+                
+                Button(action: { showShop = true }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: AppleSymbols.bitcoinsignCircleFill)
+                            .font(.system(size: 12))
+                        Text("\(coinManager.coins)")
+                            .font(AppleDesign.Typography.caption1Medium)
+                    }
+                    .foregroundColor(AppleDesign.Colors.focusOrange)
+                    .padding(.horizontal, AppleDesign.Spacing.xs)
+                    .padding(.vertical, AppleDesign.Spacing.xxs)
+                    .background(AppleDesign.Colors.focusOrange.opacity(0.2))
+                    .cornerRadius(AppleDesign.Radius.small)
                 }
-                .foregroundColor(Color(hex: "FF9500"))
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color(hex: "FF9500").opacity(0.2))
-                .cornerRadius(12)
-            }
-            
-            Button(action: { showProfile = true }) {
-                HStack(spacing: 4) {
-                    Image(systemName: "star.fill")
-                        .font(.system(size: 12))
-                    Text("Lv.\(levelingSystem.currentLevel)")
-                        .font(.system(size: 12, weight: .bold))
+                
+                Button(action: { showProfile = true }) {
+                    HStack(spacing: 4) {
+                        Image(systemName: AppleSymbols.starFill)
+                            .font(.system(size: 10))
+                        Text("Lv.\(levelingSystem.currentLevel)")
+                            .font(AppleDesign.Typography.caption2)
+                    }
+                    .foregroundColor(AppleDesign.Colors.focusPurple)
+                    .padding(.horizontal, AppleDesign.Spacing.xs)
+                    .padding(.vertical, AppleDesign.Spacing.xxs)
+                    .background(AppleDesign.Colors.focusPurple.opacity(0.2))
+                    .cornerRadius(AppleDesign.Radius.small)
                 }
-                .foregroundColor(Color(hex: "AF52DE"))
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color(hex: "AF52DE").opacity(0.2))
-                .cornerRadius(12)
             }
             
-            Button(action: { showStatistics = true }) {
-                Image(systemName: "chart.bar.fill")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(hex: "8E8E93"))
+            // Navigation icons
+            HStack(spacing: AppleDesign.Spacing.md) {
+                Button(action: { showStatistics = true }) {
+                    Image(systemName: AppleSymbols.chartBarFill)
+                        .font(.system(size: 18))
+                        .foregroundColor(AppleDesign.Colors.textSecondary)
+                }
+                
+                Button(action: { showIntelligence = true }) {
+                    Image(systemName: AppleSymbols.brainHeadProfile)
+                        .font(.system(size: 18))
+                        .foregroundColor(AppleDesign.Colors.focusPurple)
+                }
+                
+                Button(action: { showProjectPicker = true }) {
+                    Image(systemName: AppleSymbols.folderFill)
+                        .font(.system(size: 18))
+                        .foregroundColor(AppleDesign.Colors.focusCyan)
+                }
+                
+                Button(action: { showSettings = true }) {
+                    Image(systemName: AppleSymbols.gearshapeFill)
+                        .font(.system(size: 18))
+                        .foregroundColor(AppleDesign.Colors.textSecondary)
+                }
             }
-            
-            Button(action: { showIntelligence = true }) {
-                Image(systemName: "brain.head.profile")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(hex: "AF52DE"))
-            }
-            
-            Button(action: { showProjectPicker = true }) {
-                Image(systemName: "folder.fill")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(hex: "5AC8FA"))
-            }
-            
-            Button(action: { showSettings = true }) {
-                Image(systemName: "gearshape.fill")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(hex: "8E8E93"))
-            }
-            .padding(.leading, 16)
+            .padding(.leading, AppleDesign.Spacing.sm)
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 16)
+        .padding(.horizontal, AppleDesign.Spacing.lg)
+        .padding(.top, AppleDesign.Spacing.md)
     }
     
     // MARK: - Challenge Banner
     
     private func challengeBanner(_ challenge: DailyChallenge) -> some View {
-        VStack(spacing: 8) {
+        VStack(spacing: AppleDesign.Spacing.xs) {
             HStack {
-                Image(systemName: "star.fill")
+                Image(systemName: AppleSymbols.starFill)
                     .font(.system(size: 12))
-                    .foregroundColor(.yellow)
+                    .foregroundColor(AppleDesign.Colors.focusYellow)
                 Text(challenge.title)
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.white)
+                    .font(AppleDesign.Typography.subheadlineMedium)
+                    .foregroundColor(AppleDesign.Colors.textPrimary)
                 Spacer()
                 Text("+\(challenge.xpReward) XP")
-                    .font(.system(size: 12, weight: .bold))
-                    .foregroundColor(.yellow)
+                    .font(AppleDesign.Typography.caption1Medium)
+                    .foregroundColor(AppleDesign.Colors.focusYellow)
             }
             
             Text(challenge.description)
-                .font(.system(size: 12))
-                .foregroundColor(Color(hex: "8E8E93"))
+                .font(AppleDesign.Typography.caption1)
+                .foregroundColor(AppleDesign.Colors.textSecondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: "3A3A3C"))
+                        .fill(AppleDesign.Colors.backgroundElevated)
                         .frame(height: 6)
                     
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(Color(hex: "FFD60A"))
+                        .fill(AppleDesign.Colors.focusYellow)
                         .frame(width: geometry.size.width * challenge.progressPercentage, height: 6)
                 }
             }
             .frame(height: 6)
         }
-        .padding(12)
-        .background(Color(hex: "2C2C2E"))
-        .cornerRadius(12)
-        .padding(.horizontal, 20)
+        .padding(AppleDesign.Spacing.sm)
+        .background(AppleDesign.Colors.backgroundSecondary)
+        .cornerRadius(AppleDesign.Radius.large)
+        .padding(.horizontal, AppleDesign.Spacing.lg)
     }
     
     // MARK: - Phase Label
     
     private var phaseLabel: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: AppleDesign.Spacing.xs) {
             Text(phaseLabelText)
-                .font(.system(size: 20, weight: .semibold))
+                .font(AppleDesign.Typography.title3)
                 .foregroundColor(phaseColor)
             
             if stackManager.isQueueMode, let item = stackManager.currentItem {
                 Text("• \(item.projectName)")
-                    .font(.system(size: 14))
-                    .foregroundColor(Color(hex: "8E8E93"))
+                    .font(AppleDesign.Typography.subheadline)
+                    .foregroundColor(AppleDesign.Colors.textSecondary)
             }
         }
     }
@@ -319,11 +325,13 @@ struct ContentView: View {
     // MARK: - Session Indicator
     
     private var sessionIndicator: some View {
-        HStack(spacing: 8) {
+        HStack(spacing: AppleDesign.Spacing.xs) {
             ForEach(0..<modeManager.getCurrentModeSettings().sessions, id: \.self) { index in
                 Circle()
-                    .fill(index < currentSessionIndex ? Color(hex: "4ECB71") : (index == currentSessionIndex && isWorkPhase ? phaseColor : Color(hex: "3A3A3C")))
+                    .fill(index < currentSessionIndex ? AppleDesign.Colors.focusGreen : (index == currentSessionIndex && isWorkPhase ? phaseColor : AppleDesign.Colors.backgroundElevated))
                     .frame(width: 10, height: 10)
+                    .scaleEffect(index == currentSessionIndex && isWorkPhase ? 1.2 : 1.0)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: currentSessionIndex)
             }
         }
     }
@@ -332,9 +340,16 @@ struct ContentView: View {
     
     private var timerCircle: some View {
         ZStack {
+            // Outer glow
             Circle()
-                .stroke(Color(hex: "3A3A3C"), lineWidth: 12)
+                .fill(phaseColor.opacity(0.1))
+                .frame(width: 300, height: 300)
             
+            // Background track
+            Circle()
+                .stroke(AppleDesign.Colors.backgroundElevated, lineWidth: 12)
+            
+            // Progress track
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
@@ -342,27 +357,30 @@ struct ContentView: View {
                     style: StrokeStyle(lineWidth: 12, lineCap: .round)
                 )
                 .rotationEffect(.degrees(-90))
-                .animation(nil, value: progress)
+                .animation(.easeInOut(duration: 0.3), value: progress)
             
-            VStack(spacing: 8) {
+            // Inner content
+            VStack(spacing: AppleDesign.Spacing.xs) {
                 Text(timeString)
-                    .font(.system(size: 64, weight: .bold, design: .monospaced))
-                    .foregroundColor(.white)
+                    .font(AppleDesign.Typography.timerLarge)
+                    .foregroundColor(AppleDesign.Colors.textPrimary)
                     .monospacedDigit()
+                    .contentTransition(.numericText())
                 
                 Text("\(dataManager.statistics.todayMinutes) min today")
-                    .font(.system(size: 14))
-                    .foregroundColor(Color(hex: "8E8E93"))
+                    .font(AppleDesign.Typography.footnote)
+                    .foregroundColor(AppleDesign.Colors.textSecondary)
                 
                 // Sound indicator
                 if soundManager.isPlaying {
-                    HStack(spacing: 4) {
+                    HStack(spacing: AppleDesign.Spacing.xxs) {
                         Image(systemName: soundManager.currentSound.icon)
                             .font(.system(size: 12))
                         Text(soundManager.currentSound.displayName)
-                            .font(.system(size: 12))
+                            .font(AppleDesign.Typography.caption1)
                     }
-                    .foregroundColor(Color(hex: "8E8E93"))
+                    .foregroundColor(AppleDesign.Colors.textSecondary)
+                    .padding(.top, AppleDesign.Spacing.xxs)
                 }
             }
         }
@@ -372,129 +390,141 @@ struct ContentView: View {
     // MARK: - Queue Progress
     
     private var queueProgressView: some View {
-        VStack(spacing: 4) {
+        VStack(spacing: AppleDesign.Spacing.xxs) {
             Text("Queue: \(stackManager.completedSessionsInQueue)/\(stackManager.totalSessionsInQueue) sessions")
-                .font(.system(size: 12))
-                .foregroundColor(Color(hex: "8E8E93"))
+                .font(AppleDesign.Typography.caption1)
+                .foregroundColor(AppleDesign.Colors.textSecondary)
             
             ProgressView(value: Double(stackManager.completedSessionsInQueue), total: Double(stackManager.totalSessionsInQueue))
-                .tint(Color(hex: "4ECB71"))
+                .tint(AppleDesign.Colors.focusGreen)
         }
-        .padding(.horizontal, 40)
+        .padding(.horizontal, AppleDesign.Spacing.xxxl)
     }
     
     // MARK: - Control Buttons
     
     private var controlButtons: some View {
-        HStack(spacing: 32) {
+        HStack(spacing: AppleDesign.Spacing.xxl) {
             // Reset button
             Button(action: resetTimer) {
-                Image(systemName: "arrow.counterclockwise")
+                Image(systemName: AppleSymbols.arrowCounterclockwise)
                     .font(.system(size: 24))
-                    .foregroundColor(.white)
+                    .foregroundColor(AppleDesign.Colors.textPrimary)
                     .frame(width: 60, height: 60)
-                    .background(Color(hex: "3A3A3C"))
+                    .background(AppleDesign.Colors.backgroundElevated)
                     .clipShape(Circle())
+                    .appleShadow(AppleDesign.Shadow.small)
             }
+            .buttonStyle(.plain)
             
             // Play/Pause button
             Button(action: toggleTimer) {
-                Image(systemName: isRunning ? "pause.fill" : "play.fill")
+                Image(systemName: isRunning ? AppleSymbols.pauseFill : AppleSymbols.playFill)
                     .font(.system(size: 36))
                     .foregroundColor(.white)
                     .frame(width: 88, height: 88)
                     .background(phaseColor)
                     .clipShape(Circle())
+                    .appleShadow(AppleDesign.Shadow(card: AppleDesign.ShadowStyle(
+                        color: phaseColor.opacity(0.3),
+                        radius: 20,
+                        x: 0,
+                        y: 10
+                    )))
             }
+            .buttonStyle(.plain)
             
             // Skip button
             Button(action: skipToNext) {
-                Image(systemName: "forward.fill")
+                Image(systemName: AppleSymbols.forwardFill)
                     .font(.system(size: 24))
-                    .foregroundColor(.white)
+                    .foregroundColor(AppleDesign.Colors.textPrimary)
                     .frame(width: 60, height: 60)
-                    .background(Color(hex: "3A3A3C"))
+                    .background(AppleDesign.Colors.backgroundElevated)
                     .clipShape(Circle())
+                    .appleShadow(AppleDesign.Shadow.small)
             }
+            .buttonStyle(.plain)
         }
     }
     
     // MARK: - Bottom Actions
     
     private var bottomActions: some View {
-        HStack(spacing: 32) {
+        HStack(spacing: AppleDesign.Spacing.xxl) {
             // Sound toggle
             Button(action: toggleSound) {
-                VStack(spacing: 4) {
-                    Image(systemName: soundManager.isPlaying ? soundManager.currentSound.icon : "speaker.slash.fill")
+                VStack(spacing: AppleDesign.Spacing.xxs) {
+                    Image(systemName: soundManager.isPlaying ? soundManager.currentSound.icon : AppleSymbols.speakerSlashFill)
                         .font(.system(size: 20))
                     Text("Sound")
-                        .font(.system(size: 10))
+                        .font(AppleDesign.Typography.caption2)
                 }
-                .foregroundColor(soundManager.isPlaying ? Color(hex: modeManager.currentMode.accentColor) : Color(hex: "8E8E93"))
+                .foregroundColor(soundManager.isPlaying ? modeManager.currentMode.appleColor : AppleDesign.Colors.textSecondary)
             }
             
             // Queue toggle
             Button(action: { showStackEditor = true }) {
-                VStack(spacing: 4) {
+                VStack(spacing: AppleDesign.Spacing.xxs) {
                     Image(systemName: stackManager.isQueueMode ? "list.bullet.rectangle.fill" : "list.bullet.rectangle")
                         .font(.system(size: 20))
                     Text("Queue")
-                        .font(.system(size: 10))
+                        .font(AppleDesign.Typography.caption2)
                 }
-                .foregroundColor(stackManager.isQueueMode ? Color(hex: "4ECB71") : Color(hex: "8E8E93"))
+                .foregroundColor(stackManager.isQueueMode ? AppleDesign.Colors.focusGreen : AppleDesign.Colors.textSecondary)
             }
             
             // Quick mode switch
             Button(action: quickModeSwitch) {
-                VStack(spacing: 4) {
-                    Image(systemName: "bolt.fill")
+                VStack(spacing: AppleDesign.Spacing.xxs) {
+                    Image(systemName: AppleSymbols.boltFill)
                         .font(.system(size: 20))
                     Text("Quick")
-                        .font(.system(size: 10))
+                        .font(AppleDesign.Typography.caption2)
                 }
-                .foregroundColor(Color(hex: "8E8E93"))
+                .foregroundColor(AppleDesign.Colors.textSecondary)
             }
             
             // Daily Planner
             Button(action: { showDailyPlanner = true }) {
-                VStack(spacing: 4) {
-                    Image(systemName: "calendar.badge.clock")
+                VStack(spacing: AppleDesign.Spacing.xxs) {
+                    Image(systemName: AppleSymbols.calendarBadgeClock)
                         .font(.system(size: 20))
                     Text("Plan")
-                        .font(.system(size: 10))
+                        .font(AppleDesign.Typography.caption2)
                 }
-                .foregroundColor(Color(hex: "8E8E93"))
+                .foregroundColor(AppleDesign.Colors.textSecondary)
             }
             
             // Rolling Pomodoro
             Button(action: { showRollingPomodoro = true }) {
-                VStack(spacing: 4) {
-                    Image(systemName: "infinity")
+                VStack(spacing: AppleDesign.Spacing.xxs) {
+                    Image(systemName: AppleSymbols.infinity)
                         .font(.system(size: 20))
                     Text("Rolling")
-                        .font(.system(size: 10))
+                        .font(AppleDesign.Typography.caption2)
                 }
-                .foregroundColor(Color(hex: "8E8E93"))
+                .foregroundColor(AppleDesign.Colors.textSecondary)
             }
         }
-        .padding(.bottom, 16)
+        .padding(.bottom, AppleDesign.Spacing.md)
     }
     
     // MARK: - Streak Indicator
     
     private var streakIndicator: some View {
-        HStack(spacing: 8) {
-            Image(systemName: "flame.fill")
-                .foregroundColor(.orange)
+        HStack(spacing: AppleDesign.Spacing.xs) {
+            Image(systemName: AppleSymbols.flameFill)
+                .foregroundColor(AppleDesign.Colors.focusOrange)
             Text("\(dataManager.statistics.currentStreak) day streak!")
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(.white)
+                .font(AppleDesign.Typography.headlineMedium)
+                .foregroundColor(AppleDesign.Colors.textPrimary)
         }
-        .padding(.vertical, 12)
-        .padding(.horizontal, 20)
-        .background(Color(hex: "3A3A3C"))
-        .cornerRadius(20)
+        .padding(.vertical, AppleDesign.Spacing.sm)
+        .padding(.horizontal, AppleDesign.Spacing.lg)
+        .background(AppleDesign.Colors.backgroundElevated)
+        .cornerRadius(AppleDesign.Radius.pill)
+        .appleShadow(AppleDesign.Shadow.small)
     }
     
     // MARK: - Computed Properties
@@ -671,11 +701,11 @@ struct ModeSelectorView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "1C1C1E")
+                AppleDesign.Colors.background
                     .ignoresSafeArea()
                 
                 ScrollView {
-                    VStack(spacing: 12) {
+                    VStack(spacing: AppleDesign.Spacing.sm) {
                         ForEach(FocusModeType.allCases) { mode in
                             ModeCard(
                                 mode: mode,
@@ -687,7 +717,7 @@ struct ModeSelectorView: View {
                             )
                         }
                     }
-                    .padding(16)
+                    .padding(AppleDesign.Spacing.md)
                 }
             }
             .navigationTitle("Focus Mode")
@@ -695,7 +725,7 @@ struct ModeSelectorView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
         }
@@ -710,37 +740,37 @@ struct ModeCard: View {
     
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 16) {
+            HStack(spacing: AppleDesign.Spacing.md) {
                 Image(systemName: mode.icon)
                     .font(.system(size: 24))
-                    .foregroundColor(Color(hex: mode.accentColor))
+                    .foregroundColor(mode.appleColor)
                     .frame(width: 44, height: 44)
-                    .background(Color(hex: mode.accentColor).opacity(0.2))
-                    .cornerRadius(12)
+                    .background(mode.appleColor.opacity(0.2))
+                    .cornerRadius(AppleDesign.Radius.medium)
                 
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: AppleDesign.Spacing.xxs) {
                     Text(mode.displayName)
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white)
+                        .font(AppleDesign.Typography.headline)
+                        .foregroundColor(AppleDesign.Colors.textPrimary)
                     
                     Text(mode.description)
-                        .font(.system(size: 12))
-                        .foregroundColor(Color(hex: "8E8E93"))
+                        .font(AppleDesign.Typography.caption1)
+                        .foregroundColor(AppleDesign.Colors.textSecondary)
                 }
                 
                 Spacer()
                 
                 if isSelected {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(Color(hex: "4ECB71"))
+                    Image(systemName: AppleSymbols.checkmarkCircleFill)
+                        .foregroundColor(AppleDesign.Colors.focusGreen)
                 }
             }
-            .padding(16)
-            .background(isSelected ? Color(hex: mode.accentColor).opacity(0.15) : Color(hex: "2C2C2E"))
-            .cornerRadius(16)
+            .padding(AppleDesign.Spacing.md)
+            .background(isSelected ? mode.appleColor.opacity(0.15) : AppleDesign.Colors.backgroundSecondary)
+            .cornerRadius(AppleDesign.Radius.large)
             .overlay(
-                RoundedRectangle(cornerRadius: 16)
-                    .stroke(isSelected ? Color(hex: mode.accentColor).opacity(0.5) : Color.clear, lineWidth: 2)
+                RoundedRectangle(cornerRadius: AppleDesign.Radius.large)
+                    .stroke(isSelected ? mode.appleColor.opacity(0.5) : Color.clear, lineWidth: 2)
             )
         }
     }
@@ -758,112 +788,112 @@ struct TimerStackView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(hex: "1C1C1E")
+                AppleDesign.Colors.background
                     .ignoresSafeArea()
                 
-                VStack(spacing: 20) {
+                VStack(spacing: AppleDesign.Spacing.lg) {
                     // Add new item
-                    VStack(spacing: 12) {
+                    VStack(spacing: AppleDesign.Spacing.sm) {
                         TextField("Project Name", text: $newProjectName)
                             .textFieldStyle(.plain)
-                            .padding(12)
-                            .background(Color(hex: "3A3A3C"))
-                            .cornerRadius(8)
-                            .foregroundColor(.white)
+                            .padding(AppleDesign.Spacing.sm)
+                            .background(AppleDesign.Colors.backgroundElevated)
+                            .cornerRadius(AppleDesign.Radius.small)
+                            .foregroundColor(AppleDesign.Colors.textPrimary)
                         
                         HStack {
                             Text("Sessions:")
-                                .foregroundColor(Color(hex: "8E8E93"))
+                                .foregroundColor(AppleDesign.Colors.textSecondary)
                             Stepper("\(newSessionCount)", value: $newSessionCount, in: 1...12)
-                                .foregroundColor(.white)
+                                .foregroundColor(AppleDesign.Colors.textPrimary)
                         }
                         
                         Button(action: addToStack) {
                             Text("Add to Queue")
-                                .font(.system(size: 14, weight: .semibold))
+                                .font(AppleDesign.Typography.subheadlineMedium)
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
-                                .padding(12)
-                                .background(Color(hex: "4ECB71"))
-                                .cornerRadius(8)
+                                .padding(AppleDesign.Spacing.sm)
+                                .background(AppleDesign.Colors.focusGreen)
+                                .cornerRadius(AppleDesign.Radius.small)
                         }
                         .disabled(newProjectName.isEmpty)
                     }
-                    .padding()
-                    .background(Color(hex: "2C2C2E"))
-                    .cornerRadius(16)
+                    .padding(AppleDesign.Spacing.md)
+                    .background(AppleDesign.Colors.backgroundSecondary)
+                    .cornerRadius(AppleDesign.Radius.large)
                     
                     // Current queue
                     if stackManager.stack.isEmpty {
-                        VStack(spacing: 12) {
+                        VStack(spacing: AppleDesign.Spacing.sm) {
                             Image(systemName: "list.bullet.rectangle")
                                 .font(.system(size: 48))
-                                .foregroundColor(Color(hex: "3A3A3C"))
+                                .foregroundColor(AppleDesign.Colors.backgroundElevated)
                             Text("No items in queue")
-                                .foregroundColor(Color(hex: "8E8E93"))
+                                .foregroundColor(AppleDesign.Colors.textSecondary)
                         }
-                        .padding(.vertical, 40)
+                        .padding(.vertical, AppleDesign.Spacing.giant)
                     } else {
                         ForEach(Array(stackManager.stack.enumerated()), id: \.element.id) { index, item in
                             HStack {
                                 if index == stackManager.currentIndex && stackManager.isQueueMode {
-                                    Image(systemName: "play.fill")
-                                        .foregroundColor(Color(hex: "4ECB71"))
+                                    Image(systemName: AppleSymbols.playFill)
+                                        .foregroundColor(AppleDesign.Colors.focusGreen)
                                 }
                                 
                                 VStack(alignment: .leading) {
                                     Text(item.projectName)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(AppleDesign.Colors.textPrimary)
                                     Text("\(item.sessionsCount) sessions • \(item.mode.displayName)")
-                                        .font(.system(size: 12))
-                                        .foregroundColor(Color(hex: "8E8E93"))
+                                        .font(AppleDesign.Typography.caption1)
+                                        .foregroundColor(AppleDesign.Colors.textSecondary)
                                 }
                                 
                                 Spacer()
                                 
                                 if item.isCompleted {
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .foregroundColor(Color(hex: "4ECB71"))
+                                    Image(systemName: AppleSymbols.checkmarkCircleFill)
+                                        .foregroundColor(AppleDesign.Colors.focusGreen)
                                 }
                                 
                                 Button(action: { stackManager.removeFromStack(at: index) }) {
                                     Image(systemName: "xmark")
-                                        .foregroundColor(Color(hex: "8E8E93"))
+                                        .foregroundColor(AppleDesign.Colors.textSecondary)
                                 }
                             }
-                            .padding(12)
-                            .background(Color(hex: "2C2C2E"))
-                            .cornerRadius(8)
+                            .padding(AppleDesign.Spacing.sm)
+                            .background(AppleDesign.Colors.backgroundSecondary)
+                            .cornerRadius(AppleDesign.Radius.small)
                         }
                         
                         if stackManager.isQueueMode {
                             Button(action: { stackManager.clearStack() }) {
                                 Text("Cancel Queue")
-                                    .foregroundColor(Color(hex: "FF6B6B"))
+                                    .foregroundColor(AppleDesign.Colors.focusRed)
                             }
                         } else if !stackManager.stack.isEmpty {
                             Button(action: { stackManager.startQueue() }) {
                                 Text("Start Queue")
-                                    .font(.system(size: 14, weight: .semibold))
+                                    .font(AppleDesign.Typography.subheadlineMedium)
                                     .foregroundColor(.white)
                                     .frame(maxWidth: .infinity)
-                                    .padding(12)
-                                    .background(Color(hex: modeManager.currentMode.accentColor))
-                                    .cornerRadius(8)
+                                    .padding(AppleDesign.Spacing.sm)
+                                    .background(modeManager.currentMode.appleColor)
+                                    .cornerRadius(AppleDesign.Radius.small)
                             }
                         }
                     }
                     
                     Spacer()
                 }
-                .padding()
+                .padding(AppleDesign.Spacing.md)
             }
             .navigationTitle("Session Queue")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
         }
