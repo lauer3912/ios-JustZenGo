@@ -37,7 +37,7 @@ enum WidgetDataKey: String {
 
 // MARK: - Widget Data Manager
 
-class WidgetDataManager: ObservableObject {
+class WidgetDataManager {
     static let shared = WidgetDataManager()
     
     private let userDefaults: UserDefaults?
