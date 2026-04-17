@@ -68,7 +68,7 @@ class ReminderManager: ObservableObject {
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         notificationCenter.add(request)
         
-        let reminder = ScheduledReminder(id: id, title: "Morning Reminder", body: content.body!, triggerDate: time, type: .morning)
+        let reminder = ScheduledReminder(id: id, title: "Morning Reminder", body: content.body, triggerDate: time, type: .morning)
         pendingReminders.removeAll { $0.id == id }
         pendingReminders.append(reminder)
     }
@@ -88,7 +88,7 @@ class ReminderManager: ObservableObject {
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         notificationCenter.add(request)
         
-        let reminder = ScheduledReminder(id: id, title: "Evening Reminder", body: content.body!, triggerDate: time, type: .evening)
+        let reminder = ScheduledReminder(id: id, title: "Evening Reminder", body: content.body, triggerDate: time, type: .evening)
         pendingReminders.removeAll { $0.id == id }
         pendingReminders.append(reminder)
     }
@@ -113,7 +113,7 @@ class ReminderManager: ObservableObject {
         let request = UNNotificationRequest(identifier: id, content: content, trigger: trigger)
         notificationCenter.add(request)
         
-        let reminder = ScheduledReminder(id: id, title: "Streak Reminder", body: content.body!, triggerDate: Date().addingTimeInterval(86400), type: .streak)
+        let reminder = ScheduledReminder(id: id, title: "Streak Reminder", body: content.body, triggerDate: Date().addingTimeInterval(86400), type: .streak)
         pendingReminders.append(reminder)
     }
     
@@ -235,8 +235,8 @@ class ReminderManager: ObservableObject {
         notificationCenter.getPendingNotificationRequests { [weak self] requests in
             DispatchQueue.main.async {
                 self?.pendingReminders = requests.compactMap { request -> ScheduledReminder? in
-                    guard let trigger = trigger as? UNCalendarNotificationTrigger,
-                          let date = Calendar.current.date(from: trigger.dateComponents) else {
+                    guard let notificationTrigger = request.trigger as? UNCalendarNotificationTrigger,
+                          let date = Calendar.current.date(from: notificationTrigger.dateComponents) else {
                         return nil
                     }
                     let type: ScheduledReminder.ReminderType

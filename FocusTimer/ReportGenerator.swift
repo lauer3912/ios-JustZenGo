@@ -182,14 +182,12 @@ class ReportGenerator {
             let date = dateFormatter.string(from: session.startTime)
             let day = dayFormatter.string(from: session.startTime)
             let startTime = timeFormatter.string(from: session.startTime)
-            let endTime = timeFormatter.string(from: session.endTime)
+            let endTime = session.endTime != nil ? timeFormatter.string(from: session.endTime!) : "N/A"
             let duration = session.duration / 60
             let type = session.type.rawValue
-            let mode = session.modeType.rawValue
-            let label = session.label ?? ""
             let completed = session.completed ? "Yes" : "No"
             
-            csv += "\(date),\(day),\(startTime),\(endTime),\(duration),\(type),\(mode),\"\(label)\",\(completed)\n"
+            csv += "\(date),\(day),\(startTime),\(endTime),\(duration),\(type),\(completed)\n"
         }
         
         return csv
@@ -266,8 +264,6 @@ class ReportGenerator {
     private func getWeekDateRange() -> (Date, Date) {
         let calendar = Calendar.current
         let today = Date()
-        let weekday = calendar.component(.weekday, from: today)
-        let startDiff = calendar.dateFromReferenceDate(calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today))!) != nil ? 0 : 0
         guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)),
               let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) else {
             return (today, today)
@@ -310,7 +306,7 @@ class ReportGenerator {
         let sessions = dataManager.sessions.filter { $0.startTime >= startDate && $0.startTime <= endDate && $0.completed }
         var modeCounts: [String: Int] = [:]
         for session in sessions {
-            modeCounts[session.modeType.displayName, default: 0] += 1
+            modeCounts[session.type.rawValue, default: 0] += 1
         }
         return modeCounts.sorted { $0.value > $1.value }
     }
