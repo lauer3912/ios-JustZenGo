@@ -29,6 +29,10 @@ struct FocusTimerWidget: Widget {
     }
 }
 
+// MARK: - App Group Suite Name
+
+let widgetAppGroupSuiteName = "group.com.ggsheng.FocusTimer"
+
 // MARK: - Timeline Provider
 
 struct FocusTimerProvider: TimelineProvider {
@@ -41,15 +45,15 @@ struct FocusTimerProvider: TimelineProvider {
     }
     
     func getSnapshot(in context: Context, completion: @escaping (FocusTimerEntry) -> Void) {
-        let focusData = WidgetDataManager.getFocusData()
-        let timerState = WidgetDataManager.getTimerState()
+        let focusData = getWidgetFocusData()
+        let timerState = getWidgetTimerState()
         let entry = FocusTimerEntry(date: Date(), focusData: focusData, timerState: timerState)
         completion(entry)
     }
     
     func getTimeline(in context: Context, completion: @escaping (Timeline<FocusTimerEntry>) -> Void) {
-        let focusData = WidgetDataManager.getFocusData()
-        let timerState = WidgetDataManager.getTimerState()
+        let focusData = getWidgetFocusData()
+        let timerState = getWidgetTimerState()
         
         let entry = FocusTimerEntry(date: Date(), focusData: focusData, timerState: timerState)
         
@@ -62,12 +66,116 @@ struct FocusTimerProvider: TimelineProvider {
     }
 }
 
+// MARK: - Direct UserDefaults Access
+
+private func getWidgetFocusData() -> WidgetFocusData {
+    guard let userDefaults = UserDefaults(suiteName: widgetAppGroupSuiteName),
+          let data = userDefaults.dictionary(forKey: "widget_focus_data") else {
+        return WidgetFocusData.defaultData
+    }
+    
+    return WidgetFocusData(
+        sessionsToday: data["widget_sessions_today"] as? Int ?? 0,
+        streakDays: data["widget_streak_days"] as? Int ?? 0,
+        focusScore: data["widget_focus_score"] as? Int ?? 0,
+        todayFocusMinutes: data["widget_today_focus_minutes"] as? Int ?? 0,
+        currentStreak: data["widget_current_streak"] as? Int ?? 0,
+        longestStreak: data["widget_longest_streak"] as? Int ?? 0,
+        level: data["widget_level"] as? Int ?? 1,
+        coins: data["widget_coins"] as? Int ?? 0,
+        achievementsUnlocked: data["widget_achievements_unlocked"] as? Int ?? 0,
+        totalAchievements: data["widget_total_achievements"] as? Int ?? 0
+    )
+}
+
+private func getWidgetTimerState() -> WidgetTimerState {
+    guard let userDefaults = UserDefaults(suiteName: widgetAppGroupSuiteName),
+          let data = userDefaults.dictionary(forKey: "widget_timer_state") else {
+        return WidgetTimerState.defaultState
+    }
+    
+    return WidgetTimerState(
+        isRunning: data["widget_is_timer_running"] as? Bool ?? false,
+        modeName: data["widget_current_mode_name"] as? String ?? "Focus",
+        timeRemaining: data["widget_time_remaining"] as? Int ?? 0,
+        totalDuration: data["widget_total_duration"] as? Int ?? 0,
+        projectName: data["widget_project_name"] as? String ?? "General",
+        sessionsCompleted: data["widget_sessions_completed"] as? Int ?? 0
+    )
+}
+
 // MARK: - Entry
 
 struct FocusTimerEntry: TimelineEntry {
     let date: Date
     let focusData: WidgetFocusData
     let timerState: WidgetTimerState
+}
+
+// MARK: - Data Models
+
+struct WidgetFocusData {
+    let sessionsToday: Int
+    let streakDays: Int
+    let focusScore: Int
+    let todayFocusMinutes: Int
+    let currentStreak: Int
+    let longestStreak: Int
+    let level: Int
+    let coins: Int
+    let achievementsUnlocked: Int
+    let totalAchievements: Int
+    
+    var formattedFocusTime: String {
+        let hours = todayFocusMinutes / 60
+        let minutes = todayFocusMinutes % 60
+        if hours > 0 {
+            return "\(hours)h \(minutes)m"
+        }
+        return "\(minutes)m"
+    }
+    
+    static let defaultData = WidgetFocusData(
+        sessionsToday: 0,
+        streakDays: 0,
+        focusScore: 0,
+        todayFocusMinutes: 0,
+        currentStreak: 0,
+        longestStreak: 0,
+        level: 1,
+        coins: 0,
+        achievementsUnlocked: 0,
+        totalAchievements: 0
+    )
+}
+
+struct WidgetTimerState {
+    let isRunning: Bool
+    let modeName: String
+    let timeRemaining: Int
+    let totalDuration: Int
+    let projectName: String
+    let sessionsCompleted: Int
+    
+    var formattedTime: String {
+        let minutes = timeRemaining / 60
+        let seconds = timeRemaining % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    var progress: Double {
+        guard totalDuration > 0 else { return 0 }
+        return 1.0 - (Double(timeRemaining) / Double(totalDuration))
+    }
+    
+    static let defaultState = WidgetTimerState(
+        isRunning: false,
+        modeName: "Focus",
+        timeRemaining: 0,
+        totalDuration: 0,
+        projectName: "General",
+        sessionsCompleted: 0
+    )
 }
 
 // MARK: - Widget View
@@ -111,7 +219,6 @@ struct FocusTimerWidgetEntryView: View {
             Spacer()
             
             if entry.timerState.isRunning {
-                // Timer running - show timer
                 Text(entry.timerState.formattedTime)
                     .font(.system(size: 32, weight: .bold, design: .monospaced))
                     .foregroundColor(.primary)
@@ -120,7 +227,6 @@ struct FocusTimerWidgetEntryView: View {
                     .font(.caption2)
                     .foregroundColor(.secondary)
             } else {
-                // Show stats
                 Text("\(entry.focusData.sessionsToday)")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundColor(.primary)
@@ -158,7 +264,6 @@ struct FocusTimerWidgetEntryView: View {
     
     var mediumWidget: some View {
         HStack(spacing: 16) {
-            // Left side - Timer or main stat
             VStack(alignment: .leading, spacing: 6) {
                 HStack {
                     Image(systemName: "timer")
@@ -203,7 +308,6 @@ struct FocusTimerWidgetEntryView: View {
             
             Divider()
             
-            // Right side - Stats
             VStack(alignment: .leading, spacing: 10) {
                 StatRow(
                     icon: "flame.fill",
@@ -359,7 +463,6 @@ struct FocusTimerAttributes: ActivityAttributes {
 struct FocusTimerLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: FocusTimerAttributes.self) { context in
-            // Lock screen / banner UI
             HStack {
                 VStack(alignment: .leading) {
                     Text(context.attributes.projectName)
