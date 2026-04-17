@@ -10,7 +10,7 @@ import WidgetKit
 
 // MARK: - App Group Suite Name
 
-let appGroupSuiteName = "group.com.justzen.JustZen"
+let appGroupSuiteName = "group.com.ggsheng.JustZen"
 
 // MARK: - Widget Data Keys
 

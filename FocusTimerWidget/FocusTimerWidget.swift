@@ -31,7 +31,7 @@ struct FocusTimerWidget: Widget {
 
 // MARK: - App Group Suite Name
 
-let widgetAppGroupSuiteName = "group.com.justzen.JustZen"
+let widgetAppGroupSuiteName = "group.com.ggsheng.JustZen"
 
 // MARK: - Timeline Provider
 
