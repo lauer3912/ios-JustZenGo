@@ -122,7 +122,7 @@ class FocusSoundManager: ObservableObject {
         if sound.frequency >= 0 {
             // Colored noise (white/pink/brown)
             startSynthesizedAudio(soundType: sound)
-        } else if Self.synthesizableSounds.contains(sound) {
+        } else if FocusSoundType.synthesizableSounds.contains(sound) {
             // Procedurally synthesized ambient sounds
             startSynthesizedAudio(soundType: sound)
         } else {
