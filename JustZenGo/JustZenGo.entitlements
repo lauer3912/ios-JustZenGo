@@ -4,7 +4,7 @@
 <dict>
     <key>com.apple.security.application-groups</key>
     <array>
-        <string>group.com.ggsheng.JustZen</string>
+        <string>group.com.ggsheng.JustZenGo</string>
     </array>
 </dict>
 </plist>

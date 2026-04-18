@@ -32,7 +32,6 @@
 		7E4AF1ACF9315BFF0F75EBCD /* SocialSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EF05D46C842EFEEE23AF2E /* SocialSharing.swift */; };
 		7E7F6ABC553A8E87A1D20D6B /* FocusDebrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D1EFB3A5AF3C3A73A94F13 /* FocusDebrief.swift */; };
 		8CDD92EAC912BE7828AEC2A0 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A79D6D235EB6E416C6E76E /* Achievement.swift */; };
-		8F5165FB55F7BCE8241A81F9 /* Info.plist.bak in Resources */ = {isa = PBXBuildFile; fileRef = 4BED37B4636EBC0FF9D6E399 /* Info.plist.bak */; };
 		9191AE2359404F5CFF8A06C8 /* SessionLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAAFCB1199BEF0AE351E3E /* SessionLabels.swift */; };
 		95051CD7B4E6BADFF1A8A88A /* TimerAnimationStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */; };
 		9BA90A16B02B98E221A86788 /* RollingPomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBE43AEE4A7D142A1F997C /* RollingPomodoro.swift */; };
@@ -89,7 +88,6 @@
 		32D68984F9C53571776B8459 /* RollingPomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPomodoroView.swift; sourceTree = "<group>"; };
 		3ADBE43AEE4A7D142A1F997C /* RollingPomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPomodoro.swift; sourceTree = "<group>"; };
 		4111E840091F3A896799D19C /* MoodEnergyLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEnergyLogging.swift; sourceTree = "<group>"; };
-		4BED37B4636EBC0FF9D6E399 /* Info.plist.bak */ = {isa = PBXFileReference; path = Info.plist.bak; sourceTree = "<group>"; };
 		52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimationStyles.swift; sourceTree = "<group>"; };
 		55BA82C91662DC21C8ED660E /* LevelingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingSystem.swift; sourceTree = "<group>"; };
 		5AF14E3BB308C251CCF2EFE1 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 				1C5F4642E8F293DB206C9942 /* FocusTimerApp.swift */,
 				9AAF3932542B67C7AD696BED /* HealthIntegration.swift */,
 				A5C33CF248E22FF4C293C804 /* HistoryView.swift */,
-				4BED37B4636EBC0FF9D6E399 /* Info.plist.bak */,
 				84E2A2AD9BD73C88F5FF7291 /* IntelligenceDashboard.swift */,
 				F1AFF3E4411F44BF1B8E59C9 /* JustZenGo.entitlements */,
 				55BA82C91662DC21C8ED660E /* LevelingSystem.swift */,
@@ -293,7 +290,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8FE4E7CB449FBDAD8DCA1FA /* Assets.xcassets in Resources */,
-				8F5165FB55F7BCE8241A81F9 /* Info.plist.bak in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
