@@ -34,7 +34,7 @@ Navigate to: https://appstoreconnect.apple.com → Apps → JustZenGo
 |-------|-------|
 | Default Language | English |
 | Name | JustZen |
-| Subtitle | 专注力训练 · 番茄工作法 · 效率提升 |
+| Subtitle | Focus Training · Pomodoro Technique · Productivity Booster |
 | Category | Productivity |
 | Primary Category | Productivity |
 | Secondary Category | (None) |
@@ -82,9 +82,9 @@ Your personal focus companion — AI-adaptive Pomodoro, ambient sounds, and deta
 
 **Description** — Copy from `AppStore/Listing.md` Description section:
 ```
-超过 100 项功能，史上最完整的专注力 app。
+100+ features — the most complete focus app ever made.
 
-JustZen 将经典的番茄工作法提升到一个全新水平。结合 AI 智能适应、沉浸式环境音、详细的进度追踪，以及让你爱不释手的设计——帮助你重建专注力。
+JustZen takes the classic Pomodoro technique to a whole new level. AI-adaptive smarts, immersive ambient sounds, detailed progress tracking, and a design you'll actually love — all to help you rebuild your focus.
 
 [... Full description in Listing.md ...]
 ```
