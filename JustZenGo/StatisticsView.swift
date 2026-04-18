@@ -78,6 +78,7 @@ struct StatisticsView: View {
                         dismiss()
                     }
                     .foregroundColor(Color(hex: "FF6B6B"))
+                    .accessibilityIdentifier("done_statistics")
                 }
             }
             .toolbarBackground(Color(hex: "1C1C1E"), for: .navigationBar)

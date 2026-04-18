@@ -178,56 +178,32 @@ struct ContentView: View {
             
             Spacer()
             
-            // Stats buttons group
-            HStack(spacing: AppleDesign.Spacing.xxs) {
+            // Stats buttons group (compact icons only)
+            HStack(spacing: 6) {
                 Button(action: { showAchievements = true }) {
-                    HStack(spacing: 4) {
-                        Image(systemName: AppleSymbols.trophyFill)
-                            .font(.system(size: 12))
-                        Text("\(achievementManager.totalUnlocked)")
-                            .font(AppleDesign.Typography.caption1Medium)
-                    }
-                    .foregroundColor(AppleDesign.Colors.focusYellow)
-                    .padding(.horizontal, AppleDesign.Spacing.xs)
-                    .padding(.vertical, AppleDesign.Spacing.xxs)
-                    .background(AppleDesign.Colors.focusYellow.opacity(0.2))
-                    .cornerRadius(AppleDesign.Radius.small)
+                    Image(systemName: AppleSymbols.trophyFill)
+                        .font(.system(size: 14))
+                        .foregroundColor(AppleDesign.Colors.focusYellow)
                 }
                 .accessibilityIdentifier("achievements_btn")
                 
                 Button(action: { showShop = true }) {
-                    HStack(spacing: 4) {
-                        Image(systemName: AppleSymbols.bitcoinsignCircleFill)
-                            .font(.system(size: 12))
-                        Text("\(coinManager.coins)")
-                            .font(AppleDesign.Typography.caption1Medium)
-                    }
-                    .foregroundColor(AppleDesign.Colors.focusOrange)
-                    .padding(.horizontal, AppleDesign.Spacing.xs)
-                    .padding(.vertical, AppleDesign.Spacing.xxs)
-                    .background(AppleDesign.Colors.focusOrange.opacity(0.2))
-                    .cornerRadius(AppleDesign.Radius.small)
+                    Image(systemName: AppleSymbols.bitcoinsignCircleFill)
+                        .font(.system(size: 14))
+                        .foregroundColor(AppleDesign.Colors.focusOrange)
                 }
                 .accessibilityIdentifier("shop_btn")
                 
                 Button(action: { showProfile = true }) {
-                    HStack(spacing: 4) {
-                        Image(systemName: AppleSymbols.starFill)
-                            .font(.system(size: 10))
-                        Text("Lv.\(levelingSystem.currentLevel)")
-                            .font(AppleDesign.Typography.caption2)
-                    }
-                    .foregroundColor(AppleDesign.Colors.focusPurple)
-                    .padding(.horizontal, AppleDesign.Spacing.xs)
-                    .padding(.vertical, AppleDesign.Spacing.xxs)
-                    .background(AppleDesign.Colors.focusPurple.opacity(0.2))
-                    .cornerRadius(AppleDesign.Radius.small)
+                    Image(systemName: AppleSymbols.starFill)
+                        .font(.system(size: 14))
+                        .foregroundColor(AppleDesign.Colors.focusPurple)
                 }
                 .accessibilityIdentifier("profile_btn")
             }
             
             // Navigation icons
-            HStack(spacing: AppleDesign.Spacing.md) {
+            HStack(spacing: 0) {
                 Button(action: { showStatistics = true }) {
                     Image(systemName: AppleSymbols.chartBarFill)
                         .font(.system(size: 18))
@@ -732,6 +708,7 @@ struct ModeSelectorView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
+                    .accessibilityIdentifier("done_modeselector")
                         .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
@@ -900,6 +877,7 @@ struct TimerStackView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
+                    .accessibilityIdentifier("done_timerstack")
                         .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
@@ -970,6 +948,7 @@ struct LabelPickerView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
+                    .accessibilityIdentifier("done_labelpicker")
                         .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
@@ -1080,6 +1059,7 @@ struct ProfileView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
+                    .accessibilityIdentifier("done_profile")
                         .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
@@ -1188,6 +1168,7 @@ struct FocusShopView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
+                    .accessibilityIdentifier("done_shop")
                         .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
@@ -1329,6 +1310,7 @@ struct AchievementsView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
+                    .accessibilityIdentifier("done_achievements")
                         .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }
@@ -1504,6 +1486,7 @@ struct ProjectPickerView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
+                    .accessibilityIdentifier("done_projects")
                         .foregroundColor(AppleDesign.Colors.focusRed)
                 }
             }

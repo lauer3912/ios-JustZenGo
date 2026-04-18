@@ -127,6 +127,7 @@ struct SettingsView: View {
                         dismiss()
                     }
                     .foregroundColor(Color(hex: "FF6B6B"))
+                    .accessibilityIdentifier("done_settings")
                 }
             }
             .toolbarBackground(Color(hex: "1C1C1E"), for: .navigationBar)

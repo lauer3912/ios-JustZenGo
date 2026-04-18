@@ -3,7 +3,7 @@ import XCTest
 final class JustZenGoUITests: XCTestCase {
     
     private var app: XCUIApplication!
-    private let screenshotDir = "/tmp/JustZenGoScreenshots"
+    private let screenshotDir = "/tmp/JustZenGoScreenshotsFinal"
     
     override func setUp() {
         super.setUp()
@@ -22,71 +22,87 @@ final class JustZenGoUITests: XCTestCase {
         print("Saved: \(name) (\(data.count) bytes)")
     }
     
-    private func dismiss() {
-        // Try Done button first
-        let done = app.buttons["Done"]
-        if done.exists {
-            print("Tapping Done button to dismiss")
-            done.tap()
-        } else {
-            // Fallback to swipe
-            print("No Done button, swiping down")
-            app.windows.firstMatch.swipeDown()
+    // Dismiss: wait for Done in toolbar, tap it, wait for it to disappear
+    private func dismissSheet() {
+        // Wait for Done in toolbar (y: 50-200)
+        var doneFrame: CGRect?
+        for _ in 0..<60 {
+            let others = app.otherElements.allElementsBoundByIndex
+            for el in others {
+                if el.label == "Done" && el.frame.width > 15 && el.frame.origin.y > 50 && el.frame.origin.y < 200 {
+                    doneFrame = el.frame
+                    break
+                }
+            }
+            if doneFrame != nil { break }
+            Thread.sleep(forTimeInterval: 0.2)
         }
-        Thread.sleep(forTimeInterval: 2)
+        
+        if let frame = doneFrame {
+            let window = app.windows.firstMatch
+            let coord = window.coordinate(withNormalizedOffset: .zero)
+                .withOffset(CGVector(dx: frame.midX, dy: frame.midY))
+            coord.tap()
+            print("Tapped Done at (\(String(format: "%.0f", frame.origin.x)), \(String(format: "%.0f", frame.origin.y)))")
+        } else {
+            app.windows.firstMatch.swipeDown()
+            print("Swipe down (Done not found)")
+        }
+        
+        // Wait for Done to be gone
+        Thread.sleep(forTimeInterval: 1.5)
     }
     
     func testScreenshots() {
-        ss("Screen1_Home")
+        ss("01_Home")
         
         // Statistics
         app.buttons["statistics_btn"].tap()
-        Thread.sleep(forTimeInterval: 2)
-        ss("Screen2_Statistics")
-        dismiss()
-        ss("Screen1_Home_after_close")
+        Thread.sleep(forTimeInterval: 3.0)
+        ss("02_Statistics")
+        dismissSheet()
+        Thread.sleep(forTimeInterval: 1.0)
         
         // Intelligence
         app.buttons["intelligence_btn"].tap()
-        Thread.sleep(forTimeInterval: 2)
-        ss("Screen3_Intelligence")
-        dismiss()
+        Thread.sleep(forTimeInterval: 3.0)
+        ss("03_Intelligence")
+        dismissSheet()
+        Thread.sleep(forTimeInterval: 1.0)
         
-        // Settings (coordinate tap since x > window width)
-        let gear = app.buttons["settings_btn"]
-        if gear.exists {
-            let frame = gear.frame
-            let window = app.windows.firstMatch
-            let coord = window.coordinate(withNormalizedOffset: .zero).withOffset(CGVector(dx: frame.midX, dy: frame.midY))
-            coord.tap()
-            Thread.sleep(forTimeInterval: 2)
-            ss("Screen4_Settings")
-            dismiss()
-        }
+        // Settings
+        app.buttons["settings_btn"].tap()
+        Thread.sleep(forTimeInterval: 3.0)
+        ss("04_Settings")
+        dismissSheet()
+        Thread.sleep(forTimeInterval: 1.0)
         
         // Achievements
         app.buttons["achievements_btn"].tap()
-        Thread.sleep(forTimeInterval: 2)
-        ss("Screen5_Achievements")
-        dismiss()
+        Thread.sleep(forTimeInterval: 3.0)
+        ss("05_Achievements")
+        dismissSheet()
+        Thread.sleep(forTimeInterval: 1.0)
         
         // Shop
         app.buttons["shop_btn"].tap()
-        Thread.sleep(forTimeInterval: 2)
-        ss("Screen6_Shop")
-        dismiss()
+        Thread.sleep(forTimeInterval: 3.0)
+        ss("06_Shop")
+        dismissSheet()
+        Thread.sleep(forTimeInterval: 1.0)
         
         // Profile
         app.buttons["profile_btn"].tap()
-        Thread.sleep(forTimeInterval: 2)
-        ss("Screen7_Profile")
-        dismiss()
+        Thread.sleep(forTimeInterval: 3.0)
+        ss("07_Profile")
+        dismissSheet()
+        Thread.sleep(forTimeInterval: 1.0)
         
         // Projects
         app.buttons["project_btn"].tap()
-        Thread.sleep(forTimeInterval: 2)
-        ss("Screen8_Projects")
-        dismiss()
+        Thread.sleep(forTimeInterval: 3.0)
+        ss("08_Projects")
+        dismissSheet()
         
         print("ALL DONE")
     }

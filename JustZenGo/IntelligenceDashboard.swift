@@ -46,7 +46,8 @@ struct IntelligenceDashboardView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                        .foregroundColor(Color(hex: "FF6B6B"))
+                    .foregroundColor(Color(hex: "FF6B6B"))
+                    .accessibilityIdentifier("done_intelligence")
                 }
             }
             .onAppear {
