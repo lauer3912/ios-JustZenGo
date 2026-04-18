@@ -193,6 +193,7 @@ struct ContentView: View {
                     .background(AppleDesign.Colors.focusYellow.opacity(0.2))
                     .cornerRadius(AppleDesign.Radius.small)
                 }
+                .accessibilityIdentifier("achievements_btn")
                 
                 Button(action: { showShop = true }) {
                     HStack(spacing: 4) {
@@ -207,6 +208,7 @@ struct ContentView: View {
                     .background(AppleDesign.Colors.focusOrange.opacity(0.2))
                     .cornerRadius(AppleDesign.Radius.small)
                 }
+                .accessibilityIdentifier("shop_btn")
                 
                 Button(action: { showProfile = true }) {
                     HStack(spacing: 4) {
@@ -221,6 +223,7 @@ struct ContentView: View {
                     .background(AppleDesign.Colors.focusPurple.opacity(0.2))
                     .cornerRadius(AppleDesign.Radius.small)
                 }
+                .accessibilityIdentifier("profile_btn")
             }
             
             // Navigation icons
@@ -230,24 +233,28 @@ struct ContentView: View {
                         .font(.system(size: 18))
                         .foregroundColor(AppleDesign.Colors.textSecondary)
                 }
+                .accessibilityIdentifier("statistics_btn")
                 
                 Button(action: { showIntelligence = true }) {
                     Image(systemName: AppleSymbols.brainHeadProfile)
                         .font(.system(size: 18))
                         .foregroundColor(AppleDesign.Colors.focusPurple)
                 }
+                .accessibilityIdentifier("intelligence_btn")
                 
                 Button(action: { showProjectPicker = true }) {
                     Image(systemName: AppleSymbols.folderFill)
                         .font(.system(size: 18))
                         .foregroundColor(AppleDesign.Colors.focusCyan)
                 }
+                .accessibilityIdentifier("project_btn")
                 
                 Button(action: { showSettings = true }) {
                     Image(systemName: AppleSymbols.gearshapeFill)
                         .font(.system(size: 18))
                         .foregroundColor(AppleDesign.Colors.textSecondary)
                 }
+                .accessibilityIdentifier("settings_btn")
             }
             .padding(.leading, AppleDesign.Spacing.sm)
         }
