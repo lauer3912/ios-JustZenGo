@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
+            line-height: 1.8;
             color: #1a1a2e;
             background: #f8f9fa;
             padding: 40px 20px;
@@ -21,48 +21,15 @@
             border-radius: 16px;
             box-shadow: 0 2px 20px rgba(0,0,0,0.06);
         }
-        h1 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #1a1a2e;
-        }
-        .subtitle {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 32px;
-        }
-        h2 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 32px;
-            margin-bottom: 12px;
-            color: #2d2d44;
-        }
+        h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #1a1a2e; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 32px; }
+        h2 { font-size: 18px; font-weight: 600; margin-top: 32px; margin-bottom: 12px; color: #2d2d44; }
         h2:first-of-type { margin-top: 24px; }
-        p {
-            margin-bottom: 12px;
-            color: #444;
-            font-size: 15px;
-        }
-        ul {
-            margin: 12px 0 12px 20px;
-            color: #444;
-            font-size: 15px;
-        }
+        p { margin-bottom: 12px; color: #444; font-size: 15px; }
+        ul { margin: 12px 0 12px 20px; color: #444; font-size: 15px; }
         li { margin-bottom: 6px; }
-        .divider {
-            border: none;
-            border-top: 1px solid #eee;
-            margin: 32px 0;
-        }
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #888;
-            font-size: 13px;
-        }
+        .divider { border: none; border-top: 1px solid #eee; margin: 32px 0; }
+        .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; color: #888; font-size: 13px; }
         strong { color: #2d2d44; }
         a { color: #7c6aff; text-decoration: none; }
         a:hover { text-decoration: underline; }
@@ -83,7 +50,7 @@
 <body>
     <div class="container">
         <h1>JustZen</h1>
-        <p class="subtitle">Privacy Policy · Last Updated: April 12, 2026</p>
+        <p class="subtitle">Privacy Policy · Last Updated: April 18, 2026</p>
 
         <div class="highlight-box">
             <p><strong>In short:</strong> Your data stays on your device. We don't collect, track, or sell any personal information.</p>
@@ -92,9 +59,9 @@
         <h2>1. What We Collect</h2>
         <p>JustZen processes as much data locally as possible. The information we collect is minimal:</p>
         <ul>
-            <li><strong>Local usage data</strong> — Focus session records, achievement progress, and settings preferences (stored on your device only)</li>
-            <li><strong>Crash logs</strong> — Anonymous technical information when the app crashes (used to improve app quality)</li>
-            <li><strong>Analytics (opt-in)</strong> — If you choose to opt in, we collect anonymous usage statistics to understand which features are most popular</li>
+            <li><strong>Local usage data</strong> — Focus session records, achievement progress, settings preferences, and custom labels you create (all stored on your device only)</li>
+            <li><strong>Crash logs</strong> — Anonymous technical information when the app crashes (used to diagnose and improve app quality)</li>
+            <li><strong>Analytics (opt-in)</strong> — If you choose to enable analytics, we collect anonymous, aggregated usage statistics to understand which features are most valued by our users</li>
         </ul>
 
         <h2>2. What We Don't Collect</h2>
@@ -109,22 +76,22 @@
         </ul>
 
         <h2>3. Data Storage</h2>
-        <p>Your focus data is stored locally on your device by default, using UserDefaults or local database.</p>
-        <p>If you subscribe to Premium and enable iCloud sync, your data syncs through your personal iCloud account. Data associated with your Apple ID is protected by Apple's privacy policy.</p>
+        <p>Your focus data is stored locally on your device using secure iOS storage (UserDefaults and local database). No data leaves your device unless you explicitly choose to share it.</p>
+        <p>If you subscribe to Premium and enable iCloud sync, your data syncs through your personal iCloud account. Data associated with your Apple ID is protected by Apple's Privacy Policy.</p>
 
         <h2>4. Third-Party Services</h2>
         <p>JustZen uses the following third-party services:</p>
         <ul>
             <li><strong>Apple Store Connect</strong> — For in-app purchases and subscription management (governed by Apple's privacy policy)</li>
-            <li><strong>CloudKit</strong> — Optional iCloud data sync (governed by Apple's privacy policy)</li>
+            <li><strong>CloudKit</strong> — Optional iCloud data sync for Premium subscribers (governed by Apple's privacy policy)</li>
         </ul>
-        <p>We don't share data with any advertising networks, data brokers, or third-party analytics companies.</p>
+        <p>We do not share any data with advertising networks, data brokers, or third-party analytics companies.</p>
 
         <h2>5. Children's Privacy</h2>
-        <p>JustZen is not directed at children under 13. We do not knowingly collect personal information from children.</p>
+        <p>JustZen is not directed at children under 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us.</p>
 
         <h2>6. Data Security</h2>
-        <p>We use industry-standard security measures to protect your data, including device-side encryption (HTTPS in transit) and secure server infrastructure (where applicable).</p>
+        <p>We use industry-standard security measures to protect your data, including on-device encryption and secure server infrastructure (where applicable for cloud features).</p>
 
         <h2>7. Your Rights</h2>
         <p>Depending on applicable laws in your region, you may have the right to:</p>
@@ -134,14 +101,14 @@
             <li>Withdraw consent (including canceling subscriptions)</li>
             <li>Data portability</li>
         </ul>
-        <p>To exercise any of these rights, contact: <a href="mailto:privacy@focusTimer.app">privacy@focusTimer.app</a></p>
+        <p>To exercise any of these rights, contact: <a href="mailto:privacy@justzengo.app">privacy@justzengo.app</a></p>
 
         <h2>8. Policy Changes</h2>
-        <p>If we update this privacy policy, we will post the update in the app and update the "Last Updated" date at the top. Significant changes will be communicated in advance.</p>
+        <p>If we update this privacy policy, we will post the updated version in the app and update the "Last Updated" date at the top of this page. Significant changes will be communicated clearly within the app.</p>
 
         <h2>9. Contact</h2>
-        <p>If you have any questions or concerns about this privacy policy, contact us:</p>
-        <p><strong>Email:</strong> <a href="mailto:privacy@focusTimer.app">privacy@focusTimer.app</a></p>
+        <p>If you have any questions or concerns about this privacy policy, please contact us:</p>
+        <p><strong>Email:</strong> <a href="mailto:privacy@justzengo.app">privacy@justzengo.app</a></p>
 
         <hr class="divider">
 
