@@ -1,4 +1,4 @@
-name: FocusTimer
+name: JustZenGo
 options:
   bundleIdPrefix: com.ggsheng
   deploymentTarget:
@@ -25,7 +25,7 @@ targets:
     settings:
       base:
         INFOPLIST_FILE: JustZenGo/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.JustZen
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.JustZenGo
         CODE_SIGN_ENTITLEMENTS: JustZenGo/JustZenGo.entitlements
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 9L6N2ZF26B
@@ -54,7 +54,7 @@ targets:
     settings:
       base:
         INFOPLIST_FILE: JustZenGoWidget/Info.plist
-        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.JustZen.widget
+        PRODUCT_BUNDLE_IDENTIFIER: com.ggsheng.JustZenGo.widget
         CODE_SIGN_ENTITLEMENTS: JustZenGoWidget/JustZenGoWidget.entitlements
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: 9L6N2ZF26B

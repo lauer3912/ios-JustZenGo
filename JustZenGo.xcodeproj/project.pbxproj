@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00B9481BFD253271CA058143 /* MoodPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B2319A4D3A009E902D0CB /* MoodPickerView.swift */; };
+		0729AEB1B33AFF7FCFED0473 /* AICoach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6817CBC807DBD189AEB50B39 /* AICoach.swift */; };
+		08DFE11FC807C28ECD50C5F4 /* RollingPomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D68984F9C53571776B8459 /* RollingPomodoroView.swift */; };
+		1D9B6CFEE56C9C1B509BCFEF /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF14E3BB308C251CCF2EFE1 /* StatisticsView.swift */; };
+		2023B5AB34F7071B4DAA55E1 /* FocusCoins.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F843F1402FC6A3E9BF931E2 /* FocusCoins.swift */; };
+		2E9FB98C84493ECBD60C4639 /* FocusTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5F4642E8F293DB206C9942 /* FocusTimerApp.swift */; };
+		2FE2199404C76616D7B2D136 /* DailyChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94030CD8F26024E0DEB56694 /* DailyChallenge.swift */; };
+		303524162A5FE5B547BAD248 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955F1C7E727D4DDCA580166 /* TimerManager.swift */; };
+		32A383F37EEB16F50629E049 /* DailyPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86539893C29D10387F86428 /* DailyPlanner.swift */; };
+		38B20354195E1D71CCFC7A87 /* CalendarIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1044E31C0AD6EC795B53597 /* CalendarIntegration.swift */; };
+		415983257635C4E263054CA6 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766D7264F493E4F4A590F8D0 /* Models.swift */; };
+		433A124B8E7D563B9770D3D4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAA933816E69BAB18D05460 /* SettingsView.swift */; };
+		46786EC33FFCE75099C91F2E /* FocusSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C60269328727ADFCD86211 /* FocusSounds.swift */; };
+		49A3B9AFE8E8588198E679FA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C33CF248E22FF4C293C804 /* HistoryView.swift */; };
+		4F9F1D259FC1574EE2F1879B /* HealthIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF3932542B67C7AD696BED /* HealthIntegration.swift */; };
+		55BE2C33D0DFD21D6882AD36 /* WidgetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB31892E3B477FA5486BB4A /* WidgetDataManager.swift */; };
+		5D7A91FFF251091844386A7C /* LevelingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BA82C91662DC21C8ED660E /* LevelingSystem.swift */; };
+		6679ECE6D36BA87AFEEDC538 /* StreakHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E635B52CB27B430623AC4B /* StreakHeatmap.swift */; };
+		6CAFFA9A7C9EB5133DAAC414 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BA8BFAC198BCDAFB528A79 /* ReminderManager.swift */; };
+		6CBE842533D4EEBF1F0DE57D /* WellnessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4E1A9C84EE1D7909C0D61 /* WellnessManager.swift */; };
+		7629CDBAD55E6905F20FEB12 /* WidgetBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CD827C4CFE021DE7C38AC /* WidgetBridge.swift */; };
+		7DBDD533BE8B2B559CA0E0DC /* AppleDesignTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217FF4F5DCC9271BA7395CF0 /* AppleDesignTheme.swift */; };
+		7E4AF1ACF9315BFF0F75EBCD /* SocialSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EF05D46C842EFEEE23AF2E /* SocialSharing.swift */; };
+		7E7F6ABC553A8E87A1D20D6B /* FocusDebrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4D1EFB3A5AF3C3A73A94F13 /* FocusDebrief.swift */; };
+		8CDD92EAC912BE7828AEC2A0 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A79D6D235EB6E416C6E76E /* Achievement.swift */; };
+		8F5165FB55F7BCE8241A81F9 /* Info.plist.bak in Resources */ = {isa = PBXBuildFile; fileRef = 4BED37B4636EBC0FF9D6E399 /* Info.plist.bak */; };
+		9191AE2359404F5CFF8A06C8 /* SessionLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAAFCB1199BEF0AE351E3E /* SessionLabels.swift */; };
+		95051CD7B4E6BADFF1A8A88A /* TimerAnimationStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */; };
+		9BA90A16B02B98E221A86788 /* RollingPomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBE43AEE4A7D142A1F997C /* RollingPomodoro.swift */; };
+		9E5A8675C336E8D04008EBDB /* ShortcutsIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59AEDB6963AD3C16DCF041F /* ShortcutsIntegration.swift */; };
+		A2908069939FE7C455319232 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E490C740C2D44071931228E /* ReportGenerator.swift */; };
+		A528F1BD6E606D3549BBFD18 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19E00841E6F90DB7F51CF6C /* ThemeManager.swift */; };
+		B44BA3564F31CD0A3823B28C /* FocusMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAD274581FEAF8DBA69055F /* FocusMode.swift */; };
+		B5F66C4F55F91B5FA4185AD4 /* IntelligenceDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E2A2AD9BD73C88F5FF7291 /* IntelligenceDashboard.swift */; };
+		B76C449A63275C946AAFAB24 /* LiveActivityBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC5DEC9696B5C4F14E66455 /* LiveActivityBridge.swift */; };
+		B9685BA07CE0EF3F45E55365 /* ProjectTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7521378E8D8151766C6C2C /* ProjectTracking.swift */; };
+		B9DC3F24B3294B2608C67ED8 /* FocusIntelligence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81706EA04983654B14213F0 /* FocusIntelligence.swift */; };
+		BE5FB726A43913522CF9D08C /* Celebrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB5474995908A7C5ACB7F6 /* Celebrations.swift */; };
+		C615BF9CC31D56DA5B3ADE21 /* JustZenGoWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D89B73CE167F2C8E1923F50D /* JustZenGoWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D15BE39CCC9D30AB25C14A39 /* FocusTimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0597F7B29A2F03C5FECCABBD /* FocusTimerWidget.swift */; };
+		D8FE4E7CB449FBDAD8DCA1FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DEE37FAA733A6C6F183F55 /* Assets.xcassets */; };
+		E12DCC38037BB2BF5593A9CD /* TimerStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E5983376E224A80AD93135 /* TimerStackManager.swift */; };
+		F49D633E5650BC10824EFF1E /* DailyPlannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13760026422DF615D461D71 /* DailyPlannerView.swift */; };
+		F72A8A8754D0C7917E92C4FE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDEFFEC5AD1654F7F70451DE /* ContentView.swift */; };
+		FA2515DE442D7C201C470CF3 /* MoodEnergyLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4111E840091F3A896799D19C /* MoodEnergyLogging.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A6FBCEA736EFBACDB3D437B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7E8ED8FD9378411F4FD8086 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E071D8697517A8A8A175985;
+			remoteInfo = JustZenGoWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		70D1333F6105B883B730C7C9 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				C615BF9CC31D56DA5B3ADE21 /* JustZenGoWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		003BD42FDC495BC6437C25FE /* JustZenGoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustZenGoWidget.entitlements; sourceTree = "<group>"; };
+		0597F7B29A2F03C5FECCABBD /* FocusTimerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimerWidget.swift; sourceTree = "<group>"; };
+		0DBB5474995908A7C5ACB7F6 /* Celebrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Celebrations.swift; sourceTree = "<group>"; };
+		1C5F4642E8F293DB206C9942 /* FocusTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimerApp.swift; sourceTree = "<group>"; };
+		1E490C740C2D44071931228E /* ReportGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
+		217FF4F5DCC9271BA7395CF0 /* AppleDesignTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleDesignTheme.swift; sourceTree = "<group>"; };
+		31EAAFCB1199BEF0AE351E3E /* SessionLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionLabels.swift; sourceTree = "<group>"; };
+		32D68984F9C53571776B8459 /* RollingPomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPomodoroView.swift; sourceTree = "<group>"; };
+		3ADBE43AEE4A7D142A1F997C /* RollingPomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPomodoro.swift; sourceTree = "<group>"; };
+		4111E840091F3A896799D19C /* MoodEnergyLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEnergyLogging.swift; sourceTree = "<group>"; };
+		4BED37B4636EBC0FF9D6E399 /* Info.plist.bak */ = {isa = PBXFileReference; path = Info.plist.bak; sourceTree = "<group>"; };
+		52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimationStyles.swift; sourceTree = "<group>"; };
+		55BA82C91662DC21C8ED660E /* LevelingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingSystem.swift; sourceTree = "<group>"; };
+		5AF14E3BB308C251CCF2EFE1 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		615CD827C4CFE021DE7C38AC /* WidgetBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBridge.swift; sourceTree = "<group>"; };
+		61BA8BFAC198BCDAFB528A79 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
+		6817CBC807DBD189AEB50B39 /* AICoach.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AICoach.swift; sourceTree = "<group>"; };
+		68E5983376E224A80AD93135 /* TimerStackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStackManager.swift; sourceTree = "<group>"; };
+		6CAA933816E69BAB18D05460 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		766D7264F493E4F4A590F8D0 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		7F843F1402FC6A3E9BF931E2 /* FocusCoins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCoins.swift; sourceTree = "<group>"; };
+		83C60269328727ADFCD86211 /* FocusSounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSounds.swift; sourceTree = "<group>"; };
+		84E2A2AD9BD73C88F5FF7291 /* IntelligenceDashboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntelligenceDashboard.swift; sourceTree = "<group>"; };
+		87EF05D46C842EFEEE23AF2E /* SocialSharing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialSharing.swift; sourceTree = "<group>"; };
+		94030CD8F26024E0DEB56694 /* DailyChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyChallenge.swift; sourceTree = "<group>"; };
+		9955F1C7E727D4DDCA580166 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		9AAF3932542B67C7AD696BED /* HealthIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthIntegration.swift; sourceTree = "<group>"; };
+		9BAD274581FEAF8DBA69055F /* FocusMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusMode.swift; sourceTree = "<group>"; };
+		A5C33CF248E22FF4C293C804 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		AB964433976A070B19A37764 /* JustZenGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = JustZenGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFC5DEC9696B5C4F14E66455 /* LiveActivityBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityBridge.swift; sourceTree = "<group>"; };
+		B19E00841E6F90DB7F51CF6C /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		B4D1EFB3A5AF3C3A73A94F13 /* FocusDebrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusDebrief.swift; sourceTree = "<group>"; };
+		B7DEE37FAA733A6C6F183F55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BAB31892E3B477FA5486BB4A /* WidgetDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataManager.swift; sourceTree = "<group>"; };
+		D1044E31C0AD6EC795B53597 /* CalendarIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarIntegration.swift; sourceTree = "<group>"; };
+		D3E635B52CB27B430623AC4B /* StreakHeatmap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakHeatmap.swift; sourceTree = "<group>"; };
+		D59AEDB6963AD3C16DCF041F /* ShortcutsIntegration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortcutsIntegration.swift; sourceTree = "<group>"; };
+		D81706EA04983654B14213F0 /* FocusIntelligence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusIntelligence.swift; sourceTree = "<group>"; };
+		D89B73CE167F2C8E1923F50D /* JustZenGoWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = JustZenGoWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE7521378E8D8151766C6C2C /* ProjectTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectTracking.swift; sourceTree = "<group>"; };
+		E13760026422DF615D461D71 /* DailyPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlannerView.swift; sourceTree = "<group>"; };
+		E4A79D6D235EB6E416C6E76E /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
+		EDEFFEC5AD1654F7F70451DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F1AFF3E4411F44BF1B8E59C9 /* JustZenGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustZenGo.entitlements; sourceTree = "<group>"; };
+		F1B4E1A9C84EE1D7909C0D61 /* WellnessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessManager.swift; sourceTree = "<group>"; };
+		F86539893C29D10387F86428 /* DailyPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanner.swift; sourceTree = "<group>"; };
+		FC2B2319A4D3A009E902D0CB /* MoodPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodPickerView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		7376FCC0FDABCE6CF3C21061 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB964433976A070B19A37764 /* JustZenGo.app */,
+				D89B73CE167F2C8E1923F50D /* JustZenGoWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E5FAB0CA3E5B737FD533A428 /* JustZenGo */ = {
+			isa = PBXGroup;
+			children = (
+				E4A79D6D235EB6E416C6E76E /* Achievement.swift */,
+				6817CBC807DBD189AEB50B39 /* AICoach.swift */,
+				217FF4F5DCC9271BA7395CF0 /* AppleDesignTheme.swift */,
+				B7DEE37FAA733A6C6F183F55 /* Assets.xcassets */,
+				D1044E31C0AD6EC795B53597 /* CalendarIntegration.swift */,
+				0DBB5474995908A7C5ACB7F6 /* Celebrations.swift */,
+				EDEFFEC5AD1654F7F70451DE /* ContentView.swift */,
+				94030CD8F26024E0DEB56694 /* DailyChallenge.swift */,
+				F86539893C29D10387F86428 /* DailyPlanner.swift */,
+				E13760026422DF615D461D71 /* DailyPlannerView.swift */,
+				7F843F1402FC6A3E9BF931E2 /* FocusCoins.swift */,
+				B4D1EFB3A5AF3C3A73A94F13 /* FocusDebrief.swift */,
+				D81706EA04983654B14213F0 /* FocusIntelligence.swift */,
+				9BAD274581FEAF8DBA69055F /* FocusMode.swift */,
+				83C60269328727ADFCD86211 /* FocusSounds.swift */,
+				1C5F4642E8F293DB206C9942 /* FocusTimerApp.swift */,
+				9AAF3932542B67C7AD696BED /* HealthIntegration.swift */,
+				A5C33CF248E22FF4C293C804 /* HistoryView.swift */,
+				4BED37B4636EBC0FF9D6E399 /* Info.plist.bak */,
+				84E2A2AD9BD73C88F5FF7291 /* IntelligenceDashboard.swift */,
+				F1AFF3E4411F44BF1B8E59C9 /* JustZenGo.entitlements */,
+				55BA82C91662DC21C8ED660E /* LevelingSystem.swift */,
+				AFC5DEC9696B5C4F14E66455 /* LiveActivityBridge.swift */,
+				766D7264F493E4F4A590F8D0 /* Models.swift */,
+				4111E840091F3A896799D19C /* MoodEnergyLogging.swift */,
+				FC2B2319A4D3A009E902D0CB /* MoodPickerView.swift */,
+				DE7521378E8D8151766C6C2C /* ProjectTracking.swift */,
+				61BA8BFAC198BCDAFB528A79 /* ReminderManager.swift */,
+				1E490C740C2D44071931228E /* ReportGenerator.swift */,
+				3ADBE43AEE4A7D142A1F997C /* RollingPomodoro.swift */,
+				32D68984F9C53571776B8459 /* RollingPomodoroView.swift */,
+				31EAAFCB1199BEF0AE351E3E /* SessionLabels.swift */,
+				6CAA933816E69BAB18D05460 /* SettingsView.swift */,
+				D59AEDB6963AD3C16DCF041F /* ShortcutsIntegration.swift */,
+				87EF05D46C842EFEEE23AF2E /* SocialSharing.swift */,
+				5AF14E3BB308C251CCF2EFE1 /* StatisticsView.swift */,
+				D3E635B52CB27B430623AC4B /* StreakHeatmap.swift */,
+				B19E00841E6F90DB7F51CF6C /* ThemeManager.swift */,
+				52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */,
+				9955F1C7E727D4DDCA580166 /* TimerManager.swift */,
+				68E5983376E224A80AD93135 /* TimerStackManager.swift */,
+				F1B4E1A9C84EE1D7909C0D61 /* WellnessManager.swift */,
+				615CD827C4CFE021DE7C38AC /* WidgetBridge.swift */,
+				BAB31892E3B477FA5486BB4A /* WidgetDataManager.swift */,
+			);
+			path = JustZenGo;
+			sourceTree = "<group>";
+		};
+		F61B5FF89CDDED1137D5B8B2 = {
+			isa = PBXGroup;
+			children = (
+				E5FAB0CA3E5B737FD533A428 /* JustZenGo */,
+				F8E8D2C487384F7769C5E174 /* JustZenGoWidget */,
+				7376FCC0FDABCE6CF3C21061 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F8E8D2C487384F7769C5E174 /* JustZenGoWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0597F7B29A2F03C5FECCABBD /* FocusTimerWidget.swift */,
+				003BD42FDC495BC6437C25FE /* JustZenGoWidget.entitlements */,
+			);
+			path = JustZenGoWidget;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0D92EC0E02E40CB6B03ED1DE /* JustZenGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E24419E4A44A0BF29EEDC12E /* Build configuration list for PBXNativeTarget "JustZenGo" */;
+			buildPhases = (
+				2E5CBFD7734A309A4375F3AF /* Sources */,
+				85257D8C913B411DF728E030 /* Resources */,
+				70D1333F6105B883B730C7C9 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1CAB76D5C1B74D40AB6215A /* PBXTargetDependency */,
+			);
+			name = JustZenGo;
+			packageProductDependencies = (
+			);
+			productName = JustZenGo;
+			productReference = AB964433976A070B19A37764 /* JustZenGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9E071D8697517A8A8A175985 /* JustZenGoWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 10DC8CD786E792E45504ADD0 /* Build configuration list for PBXNativeTarget "JustZenGoWidget" */;
+			buildPhases = (
+				23F41C275F91904131089E8A /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JustZenGoWidget;
+			packageProductDependencies = (
+			);
+			productName = JustZenGoWidget;
+			productReference = D89B73CE167F2C8E1923F50D /* JustZenGoWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E7E8ED8FD9378411F4FD8086 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					0D92EC0E02E40CB6B03ED1DE = {
+						DevelopmentTeam = 9L6N2ZF26B;
+						ProvisioningStyle = Automatic;
+					};
+					9E071D8697517A8A8A175985 = {
+						DevelopmentTeam = 9L6N2ZF26B;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = DEE17B37A1F1630678E78F63 /* Build configuration list for PBXProject "JustZenGo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F61B5FF89CDDED1137D5B8B2;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 7376FCC0FDABCE6CF3C21061 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0D92EC0E02E40CB6B03ED1DE /* JustZenGo */,
+				9E071D8697517A8A8A175985 /* JustZenGoWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		85257D8C913B411DF728E030 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8FE4E7CB449FBDAD8DCA1FA /* Assets.xcassets in Resources */,
+				8F5165FB55F7BCE8241A81F9 /* Info.plist.bak in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		23F41C275F91904131089E8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D15BE39CCC9D30AB25C14A39 /* FocusTimerWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E5CBFD7734A309A4375F3AF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0729AEB1B33AFF7FCFED0473 /* AICoach.swift in Sources */,
+				8CDD92EAC912BE7828AEC2A0 /* Achievement.swift in Sources */,
+				7DBDD533BE8B2B559CA0E0DC /* AppleDesignTheme.swift in Sources */,
+				38B20354195E1D71CCFC7A87 /* CalendarIntegration.swift in Sources */,
+				BE5FB726A43913522CF9D08C /* Celebrations.swift in Sources */,
+				F72A8A8754D0C7917E92C4FE /* ContentView.swift in Sources */,
+				2FE2199404C76616D7B2D136 /* DailyChallenge.swift in Sources */,
+				32A383F37EEB16F50629E049 /* DailyPlanner.swift in Sources */,
+				F49D633E5650BC10824EFF1E /* DailyPlannerView.swift in Sources */,
+				2023B5AB34F7071B4DAA55E1 /* FocusCoins.swift in Sources */,
+				7E7F6ABC553A8E87A1D20D6B /* FocusDebrief.swift in Sources */,
+				B9DC3F24B3294B2608C67ED8 /* FocusIntelligence.swift in Sources */,
+				B44BA3564F31CD0A3823B28C /* FocusMode.swift in Sources */,
+				46786EC33FFCE75099C91F2E /* FocusSounds.swift in Sources */,
+				2E9FB98C84493ECBD60C4639 /* FocusTimerApp.swift in Sources */,
+				4F9F1D259FC1574EE2F1879B /* HealthIntegration.swift in Sources */,
+				49A3B9AFE8E8588198E679FA /* HistoryView.swift in Sources */,
+				B5F66C4F55F91B5FA4185AD4 /* IntelligenceDashboard.swift in Sources */,
+				5D7A91FFF251091844386A7C /* LevelingSystem.swift in Sources */,
+				B76C449A63275C946AAFAB24 /* LiveActivityBridge.swift in Sources */,
+				415983257635C4E263054CA6 /* Models.swift in Sources */,
+				FA2515DE442D7C201C470CF3 /* MoodEnergyLogging.swift in Sources */,
+				00B9481BFD253271CA058143 /* MoodPickerView.swift in Sources */,
+				B9685BA07CE0EF3F45E55365 /* ProjectTracking.swift in Sources */,
+				6CAFFA9A7C9EB5133DAAC414 /* ReminderManager.swift in Sources */,
+				A2908069939FE7C455319232 /* ReportGenerator.swift in Sources */,
+				9BA90A16B02B98E221A86788 /* RollingPomodoro.swift in Sources */,
+				08DFE11FC807C28ECD50C5F4 /* RollingPomodoroView.swift in Sources */,
+				9191AE2359404F5CFF8A06C8 /* SessionLabels.swift in Sources */,
+				433A124B8E7D563B9770D3D4 /* SettingsView.swift in Sources */,
+				9E5A8675C336E8D04008EBDB /* ShortcutsIntegration.swift in Sources */,
+				7E4AF1ACF9315BFF0F75EBCD /* SocialSharing.swift in Sources */,
+				1D9B6CFEE56C9C1B509BCFEF /* StatisticsView.swift in Sources */,
+				6679ECE6D36BA87AFEEDC538 /* StreakHeatmap.swift in Sources */,
+				A528F1BD6E606D3549BBFD18 /* ThemeManager.swift in Sources */,
+				95051CD7B4E6BADFF1A8A88A /* TimerAnimationStyles.swift in Sources */,
+				303524162A5FE5B547BAD248 /* TimerManager.swift in Sources */,
+				E12DCC38037BB2BF5593A9CD /* TimerStackManager.swift in Sources */,
+				6CBE842533D4EEBF1F0DE57D /* WellnessManager.swift in Sources */,
+				7629CDBAD55E6905F20FEB12 /* WidgetBridge.swift in Sources */,
+				55BE2C33D0DFD21D6882AD36 /* WidgetDataManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F1CAB76D5C1B74D40AB6215A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E071D8697517A8A8A175985 /* JustZenGoWidget */;
+			targetProxy = 0A6FBCEA736EFBACDB3D437B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		02E2949D233F6586DB92EF68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = JustZenGoWidget/JustZenGoWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				INFOPLIST_FILE = JustZenGoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0D1DF5595D36A43913B2546C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		258048BFA7DFE3CFD7D24A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		4C1C93AD1FB81E52ACD9E1B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = JustZenGoWidget/JustZenGoWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				INFOPLIST_FILE = JustZenGoWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo.widget;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6252AFC62036B60CA378A6B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JustZenGo/JustZenGo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				INFOPLIST_FILE = JustZenGo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8042A2505C657D8C75CD8BFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = JustZenGo/JustZenGo.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				INFOPLIST_FILE = JustZenGo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo;
+				SDKROOT = iphoneos;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		10DC8CD786E792E45504ADD0 /* Build configuration list for PBXNativeTarget "JustZenGoWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02E2949D233F6586DB92EF68 /* Debug */,
+				4C1C93AD1FB81E52ACD9E1B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		DEE17B37A1F1630678E78F63 /* Build configuration list for PBXProject "JustZenGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				258048BFA7DFE3CFD7D24A8A /* Debug */,
+				0D1DF5595D36A43913B2546C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		E24419E4A44A0BF29EEDC12E /* Build configuration list for PBXNativeTarget "JustZenGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8042A2505C657D8C75CD8BFB /* Debug */,
+				6252AFC62036B60CA378A6B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E7E8ED8FD9378411F4FD8086 /* Project object */;
+}
