@@ -54,34 +54,34 @@ final class JustZenGoUITests: XCTestCase {
     // ─────────────────────────────────────────────────────
     func testScreenshot_iPhone_69_portrait() {
         print("=== iPhone 6.9\" portrait (1320×2868) ===")
-        ss("iPhone_69_portrait_01_Home.png")
+        ss("iPhone_69_portrait_01_Home")
         Thread.sleep(forTimeInterval: 1.0)
 
         if app.buttons["statistics_btn"].waitForExistence(timeout: 5) {
             app.buttons["statistics_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPhone_69_portrait_02_Statistics.png")
+            ss("iPhone_69_portrait_02_Statistics")
             dismissSheet()
         }
 
         if app.buttons["intelligence_btn"].waitForExistence(timeout: 5) {
             app.buttons["intelligence_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPhone_69_portrait_03_Intelligence.png")
+            ss("iPhone_69_portrait_03_Intelligence")
             dismissSheet()
         }
 
         if app.buttons["achievements_btn"].waitForExistence(timeout: 5) {
             app.buttons["achievements_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPhone_69_portrait_04_Achievements.png")
+            ss("iPhone_69_portrait_04_Achievements")
             dismissSheet()
         }
 
         if app.buttons["shop_btn"].waitForExistence(timeout: 5) {
             app.buttons["shop_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPhone_69_portrait_05_Shop.png")
+            ss("iPhone_69_portrait_05_Shop")
             dismissSheet()
         }
     }
@@ -92,27 +92,27 @@ final class JustZenGoUITests: XCTestCase {
     // ─────────────────────────────────────────────────────
     func testScreenshot_iPhone_69_landscape() {
         print("=== iPhone 6.9\" landscape (2868×1320) ===")
-        ss("iPhone_69_landscape_01_Home.png")
+        ss("iPhone_69_landscape_01_Home")
         Thread.sleep(forTimeInterval: 1.0)
 
         if app.buttons["statistics_btn"].waitForExistence(timeout: 5) {
             app.buttons["statistics_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPhone_69_landscape_02_Statistics.png")
+            ss("iPhone_69_landscape_02_Statistics")
             dismissSheet()
         }
 
         if app.buttons["intelligence_btn"].waitForExistence(timeout: 5) {
             app.buttons["intelligence_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPhone_69_landscape_03_Intelligence.png")
+            ss("iPhone_69_landscape_03_Intelligence")
             dismissSheet()
         }
 
         if app.buttons["achievements_btn"].waitForExistence(timeout: 5) {
             app.buttons["achievements_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPhone_69_landscape_04_Achievements.png")
+            ss("iPhone_69_landscape_04_Achievements")
             dismissSheet()
         }
     }
@@ -122,34 +122,34 @@ final class JustZenGoUITests: XCTestCase {
     // ─────────────────────────────────────────────────────
     func testScreenshot_iPad_129_portrait() {
         print("=== iPad 12.9\" portrait (2064×2752) ===")
-        ss("iPad_129_portrait_01_Home.png")
+        ss("iPad_129_portrait_01_Home")
         Thread.sleep(forTimeInterval: 1.0)
 
         if app.buttons["statistics_btn"].waitForExistence(timeout: 5) {
             app.buttons["statistics_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPad_129_portrait_02_Statistics.png")
+            ss("iPad_129_portrait_02_Statistics")
             dismissSheet()
         }
 
         if app.buttons["intelligence_btn"].waitForExistence(timeout: 5) {
             app.buttons["intelligence_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPad_129_portrait_03_Intelligence.png")
+            ss("iPad_129_portrait_03_Intelligence")
             dismissSheet()
         }
 
         if app.buttons["achievements_btn"].waitForExistence(timeout: 5) {
             app.buttons["achievements_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPad_129_portrait_04_Achievements.png")
+            ss("iPad_129_portrait_04_Achievements")
             dismissSheet()
         }
 
         if app.buttons["shop_btn"].waitForExistence(timeout: 5) {
             app.buttons["shop_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPad_129_portrait_05_Shop.png")
+            ss("iPad_129_portrait_05_Shop")
             dismissSheet()
         }
     }
@@ -160,27 +160,27 @@ final class JustZenGoUITests: XCTestCase {
     // ─────────────────────────────────────────────────────
     func testScreenshot_iPad_129_landscape() {
         print("=== iPad 12.9\" landscape (2752×2064) ===")
-        ss("iPad_129_landscape_01_Home.png")
+        ss("iPad_129_landscape_01_Home")
         Thread.sleep(forTimeInterval: 1.0)
 
         if app.buttons["statistics_btn"].waitForExistence(timeout: 5) {
             app.buttons["statistics_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPad_129_landscape_02_Statistics.png")
+            ss("iPad_129_landscape_02_Statistics")
             dismissSheet()
         }
 
         if app.buttons["intelligence_btn"].waitForExistence(timeout: 5) {
             app.buttons["intelligence_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPad_129_landscape_03_Intelligence.png")
+            ss("iPad_129_landscape_03_Intelligence")
             dismissSheet()
         }
 
         if app.buttons["achievements_btn"].waitForExistence(timeout: 5) {
             app.buttons["achievements_btn"].tap()
             Thread.sleep(forTimeInterval: 3.0)
-            ss("iPad_129_landscape_04_Achievements.png")
+            ss("iPad_129_landscape_04_Achievements")
             dismissSheet()
         }
     }
