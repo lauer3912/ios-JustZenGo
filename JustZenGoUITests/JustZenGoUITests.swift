@@ -24,7 +24,7 @@ final class JustZenGoUITests: XCTestCase {
     // Dismiss sheet via Done button (most reliable), fallback to swipeDown
     private func dismissSheet() {
         var found = false
-        for i in 0..<30 {
+        for _ in 0..<30 {
             let allElements = app.otherElements.allElementsBoundByIndex
             for el in allElements {
                 if el.exists && el.label == "Done" && el.frame.width > 15 && el.frame.origin.y > 40 && el.frame.origin.y < 250 {
@@ -43,17 +43,10 @@ final class JustZenGoUITests: XCTestCase {
         Thread.sleep(forTimeInterval: 1.5)
     }
 
-    // Rotate simulator display via xcrun simctl
+    // NOTE: Landscape rotation is handled by screenshot_justzen.sh via xcrun simctl.
+    // This is a no-op placeholder for compile compatibility.
     private func simRotate(angle: Int) {
-        let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/xcrun")
-        task.arguments = ["simctl", "rotateui", "booted", "--angle=\(angle)"]
-        let pipe = Pipe()
-        task.standardOutput = pipe
-        task.standardError = pipe
-        try? task.run()
-        task.waitUntilExit()
-        print("simRotate angle=\(angle) exitCode=\(task.terminationStatus)")
+        print("simRotate(angle=\(angle)) — rotation done by shell script")
     }
 
     // ─────────────────────────────────────────────────────
@@ -95,12 +88,10 @@ final class JustZenGoUITests: XCTestCase {
 
     // ─────────────────────────────────────────────────────
     // iPhone 6.9" — landscape 2868×1320
+    // (Simulator rotated by shell script BEFORE this runs)
     // ─────────────────────────────────────────────────────
     func testScreenshot_iPhone_69_landscape() {
         print("=== iPhone 6.9\" landscape (2868×1320) ===")
-        simRotate(angle: 90)
-        Thread.sleep(forTimeInterval: 2.0)
-
         ss("iPhone_69_landscape_01_Home.png")
         Thread.sleep(forTimeInterval: 1.0)
 
@@ -124,9 +115,6 @@ final class JustZenGoUITests: XCTestCase {
             ss("iPhone_69_landscape_04_Achievements.png")
             dismissSheet()
         }
-
-        simRotate(angle: 0)
-        Thread.sleep(forTimeInterval: 1.0)
     }
 
     // ─────────────────────────────────────────────────────
@@ -168,12 +156,10 @@ final class JustZenGoUITests: XCTestCase {
 
     // ─────────────────────────────────────────────────────
     // iPad 12.9" — landscape 2752×2064
+    // (Simulator rotated by shell script BEFORE this runs)
     // ─────────────────────────────────────────────────────
     func testScreenshot_iPad_129_landscape() {
         print("=== iPad 12.9\" landscape (2752×2064) ===")
-        simRotate(angle: 90)
-        Thread.sleep(forTimeInterval: 2.0)
-
         ss("iPad_129_landscape_01_Home.png")
         Thread.sleep(forTimeInterval: 1.0)
 
@@ -197,8 +183,5 @@ final class JustZenGoUITests: XCTestCase {
             ss("iPad_129_landscape_04_Achievements.png")
             dismissSheet()
         }
-
-        simRotate(angle: 0)
-        Thread.sleep(forTimeInterval: 1.0)
     }
 }
