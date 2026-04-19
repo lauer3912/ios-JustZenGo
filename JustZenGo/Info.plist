@@ -4,6 +4,8 @@
 <dict>
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
     <key>CFBundleDisplayName</key>
     <string>JustZen</string>
     <key>CFBundleExecutable</key>
@@ -56,23 +58,23 @@
     
     <!-- HealthKit -->
     <key>NSHealthShareUsageDescription</key>
-    <string>JustZen 需要读取健康数据来分析您专注时的心率变化，帮助您了解最佳专注状态。</string>
+    <string>JustZen needs to read health data to analyze heart rate changes during focus sessions and help you discover your optimal focus state.</string>
     <key>NSHealthUpdateUsageDescription</key>
-    <string>JustZen 需要记录专注活动到健康应用，帮助您追踪专注与健康的关联。</string>
+    <string>JustZen needs to log focus activities to the Health app to help you track the relationship between focus and health.</string>
     
     <!-- Calendar -->
     <key>NSCalendarsUsageDescription</key>
-    <string>JustZen 需要访问日历来查看您的日程安排，并在空闲时段提醒您开始专注。</string>
+    <string>JustZen needs access to your calendar to view your schedule and remind you to start focus sessions during free time.</string>
     <key>NSCalendarsFullAccessUsageDescription</key>
-    <string>JustZen 需要完整的日历访问权限来查看日程并避免在会议时段打扰您。</string>
+    <string>JustZen needs full calendar access to view your schedule and avoid disturbing you during meetings.</string>
     
     <!-- Notifications -->
     <key>NSUserNotificationsUsageDescription</key>
-    <string>JustZen 需要发送通知来提醒您专注时段开始和结束。</string>
+    <string>JustZen needs to send notifications to remind you when focus sessions start and end.</string>
     
     <!-- Siri -->
     <key>NSSiriUsageDescription</key>
-    <string>允许使用 Siri 来启动专注计时器。</string>
+    <string>Allow Siri to start the focus timer.</string>
     
     <!-- App Intents -->
     <key>NSAppIntentsRequested</key>
