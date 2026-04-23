@@ -7,7 +7,6 @@ import SwiftUI
 
 struct IntelligenceDashboardView: View {
     @StateObject private var intelligence = FocusIntelligence.shared
-    @StateObject private var health = HealthIntegration.shared
     @StateObject private var coach = AICoach.shared
     @Environment(\.dismiss) private var dismiss
     
@@ -25,11 +24,6 @@ struct IntelligenceDashboardView: View {
                         // AI Coach Card
                         coachCard
                         
-                        // Health Correlation
-                        if health.isAuthorized {
-                            healthCard
-                        }
-                        
                         // Insights List
                         insightsList
                         
@@ -46,13 +40,12 @@ struct IntelligenceDashboardView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Done") { dismiss() }
-                    .foregroundColor(Color(hex: "FF6B6B"))
-                    .accessibilityIdentifier("done_intelligence")
+                        .foregroundColor(Color(hex: "FF6B6B"))
+                        .accessibilityIdentifier("done_intelligence")
                 }
             }
             .onAppear {
                 intelligence.analyze()
-                health.fetchTodayData()
             }
         }
         .preferredColorScheme(.dark)
@@ -165,37 +158,6 @@ struct IntelligenceDashboardView: View {
         .cornerRadius(16)
     }
     
-    // MARK: - Health Card
-    
-    private var healthCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: "heart.fill")
-                    .foregroundColor(.red)
-                Text("Health Correlation")
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.white)
-                
-                Spacer()
-            }
-            
-            HStack(spacing: 24) {
-                HealthMetric(icon: "figure.walk", value: "\(health.todaySteps)", label: "Steps", color: .green)
-                HealthMetric(icon: "bed.double.fill", value: String(format: "%.1f", health.todaySleepHours), label: "Hours Sleep", color: .blue)
-            }
-            
-            if let tip = health.getHealthTip() {
-                Text(tip)
-                    .font(.system(size: 12))
-                    .foregroundColor(Color(hex: "8E8E93"))
-                    .padding(.top, 4)
-            }
-        }
-        .padding(20)
-        .background(Color(hex: "2C2C2E"))
-        .cornerRadius(16)
-    }
-    
     // MARK: - Insights List
     
     private var insightsList: some View {
@@ -288,28 +250,6 @@ struct ScoreRow: View {
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(.white)
         }
-    }
-}
-
-struct HealthMetric: View {
-    let icon: String
-    let value: String
-    let label: String
-    let color: Color
-    
-    var body: some View {
-        VStack(spacing: 4) {
-            Image(systemName: icon)
-                .font(.system(size: 20))
-                .foregroundColor(color)
-            Text(value)
-                .font(.system(size: 16, weight: .bold))
-                .foregroundColor(.white)
-            Text(label)
-                .font(.system(size: 10))
-                .foregroundColor(Color(hex: "8E8E93"))
-        }
-        .frame(maxWidth: .infinity)
     }
 }
 

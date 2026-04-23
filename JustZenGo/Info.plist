@@ -56,18 +56,6 @@
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
     
-    <!-- HealthKit -->
-    <key>NSHealthShareUsageDescription</key>
-    <string>JustZen needs to read health data to analyze heart rate changes during focus sessions and help you discover your optimal focus state.</string>
-    <key>NSHealthUpdateUsageDescription</key>
-    <string>JustZen needs to log focus activities to the Health app to help you track the relationship between focus and health.</string>
-    
-    <!-- Calendar -->
-    <key>NSCalendarsUsageDescription</key>
-    <string>JustZen needs access to your calendar to view your schedule and remind you to start focus sessions during free time.</string>
-    <key>NSCalendarsFullAccessUsageDescription</key>
-    <string>JustZen needs full calendar access to view your schedule and avoid disturbing you during meetings.</string>
-    
     <!-- Notifications -->
     <key>NSUserNotificationsUsageDescription</key>
     <string>JustZen needs to send notifications to remind you when focus sessions start and end.</string>

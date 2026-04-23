@@ -34,6 +34,7 @@
 		8CDD92EAC912BE7828AEC2A0 /* Achievement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A79D6D235EB6E416C6E76E /* Achievement.swift */; };
 		9191AE2359404F5CFF8A06C8 /* SessionLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EAAFCB1199BEF0AE351E3E /* SessionLabels.swift */; };
 		95051CD7B4E6BADFF1A8A88A /* TimerAnimationStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */; };
+		96B558C82B599E2A7D6F61D0 /* JustZenGoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE56084C8BF669CC87021802 /* JustZenGoUITests.swift */; };
 		9BA90A16B02B98E221A86788 /* RollingPomodoro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBE43AEE4A7D142A1F997C /* RollingPomodoro.swift */; };
 		9E5A8675C336E8D04008EBDB /* ShortcutsIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59AEDB6963AD3C16DCF041F /* ShortcutsIntegration.swift */; };
 		A2908069939FE7C455319232 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E490C740C2D44071931228E /* ReportGenerator.swift */; };
@@ -44,7 +45,6 @@
 		B9685BA07CE0EF3F45E55365 /* ProjectTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7521378E8D8151766C6C2C /* ProjectTracking.swift */; };
 		B9DC3F24B3294B2608C67ED8 /* FocusIntelligence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81706EA04983654B14213F0 /* FocusIntelligence.swift */; };
 		BE5FB726A43913522CF9D08C /* Celebrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB5474995908A7C5ACB7F6 /* Celebrations.swift */; };
-		C615BF9CC31D56DA5B3ADE21 /* JustZenGoWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D89B73CE167F2C8E1923F50D /* JustZenGoWidget.appex */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D15BE39CCC9D30AB25C14A39 /* FocusTimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0597F7B29A2F03C5FECCABBD /* FocusTimerWidget.swift */; };
 		D8FE4E7CB449FBDAD8DCA1FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DEE37FAA733A6C6F183F55 /* Assets.xcassets */; };
 		E12DCC38037BB2BF5593A9CD /* TimerStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E5983376E224A80AD93135 /* TimerStackManager.swift */; };
@@ -54,28 +54,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0A6FBCEA736EFBACDB3D437B /* PBXContainerItemProxy */ = {
+		82B2A5C391B63FC6E52770EB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7E8ED8FD9378411F4FD8086 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9E071D8697517A8A8A175985;
-			remoteInfo = JustZenGoWidget;
+			remoteGlobalIDString = 0D92EC0E02E40CB6B03ED1DE;
+			remoteInfo = JustZenGo;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		70D1333F6105B883B730C7C9 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				C615BF9CC31D56DA5B3ADE21 /* JustZenGoWidget.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		003BD42FDC495BC6437C25FE /* JustZenGoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustZenGoWidget.entitlements; sourceTree = "<group>"; };
@@ -90,6 +76,7 @@
 		4111E840091F3A896799D19C /* MoodEnergyLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEnergyLogging.swift; sourceTree = "<group>"; };
 		52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimationStyles.swift; sourceTree = "<group>"; };
 		55BA82C91662DC21C8ED660E /* LevelingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingSystem.swift; sourceTree = "<group>"; };
+		56EB8AF9584F7FB1E1037656 /* JustZenGoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = JustZenGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AF14E3BB308C251CCF2EFE1 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		615CD827C4CFE021DE7C38AC /* WidgetBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBridge.swift; sourceTree = "<group>"; };
 		61BA8BFAC198BCDAFB528A79 /* ReminderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderManager.swift; sourceTree = "<group>"; };
@@ -121,6 +108,7 @@
 		E13760026422DF615D461D71 /* DailyPlannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlannerView.swift; sourceTree = "<group>"; };
 		E4A79D6D235EB6E416C6E76E /* Achievement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Achievement.swift; sourceTree = "<group>"; };
 		EDEFFEC5AD1654F7F70451DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EE56084C8BF669CC87021802 /* JustZenGoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustZenGoUITests.swift; sourceTree = "<group>"; };
 		F1AFF3E4411F44BF1B8E59C9 /* JustZenGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustZenGo.entitlements; sourceTree = "<group>"; };
 		F1B4E1A9C84EE1D7909C0D61 /* WellnessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessManager.swift; sourceTree = "<group>"; };
 		F86539893C29D10387F86428 /* DailyPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanner.swift; sourceTree = "<group>"; };
@@ -132,9 +120,18 @@
 			isa = PBXGroup;
 			children = (
 				AB964433976A070B19A37764 /* JustZenGo.app */,
+				56EB8AF9584F7FB1E1037656 /* JustZenGoUITests.xctest */,
 				D89B73CE167F2C8E1923F50D /* JustZenGoWidget.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D70E11B154ECA1ED8953BBF6 /* JustZenGoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EE56084C8BF669CC87021802 /* JustZenGoUITests.swift */,
+			);
+			path = JustZenGoUITests;
 			sourceTree = "<group>";
 		};
 		E5FAB0CA3E5B737FD533A428 /* JustZenGo */ = {
@@ -191,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				E5FAB0CA3E5B737FD533A428 /* JustZenGo */,
+				D70E11B154ECA1ED8953BBF6 /* JustZenGoUITests */,
 				F8E8D2C487384F7769C5E174 /* JustZenGoWidget */,
 				7376FCC0FDABCE6CF3C21061 /* Products */,
 			);
@@ -214,12 +212,10 @@
 			buildPhases = (
 				2E5CBFD7734A309A4375F3AF /* Sources */,
 				85257D8C913B411DF728E030 /* Resources */,
-				70D1333F6105B883B730C7C9 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F1CAB76D5C1B74D40AB6215A /* PBXTargetDependency */,
 			);
 			name = JustZenGo;
 			packageProductDependencies = (
@@ -245,6 +241,24 @@
 			productReference = D89B73CE167F2C8E1923F50D /* JustZenGoWidget.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		E2AE1DF9618F14CCF6CCB7A4 /* JustZenGoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0CAF97B579C1603FF78A198 /* Build configuration list for PBXNativeTarget "JustZenGoUITests" */;
+			buildPhases = (
+				08F3FBF18B751741D3DCC595 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD9ED111054DEC5B68C25636 /* PBXTargetDependency */,
+			);
+			name = JustZenGoUITests;
+			packageProductDependencies = (
+			);
+			productName = JustZenGoUITests;
+			productReference = 56EB8AF9584F7FB1E1037656 /* JustZenGoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -261,6 +275,11 @@
 					9E071D8697517A8A8A175985 = {
 						DevelopmentTeam = 9L6N2ZF26B;
 						ProvisioningStyle = Automatic;
+					};
+					E2AE1DF9618F14CCF6CCB7A4 = {
+						DevelopmentTeam = 9L6N2ZF26B;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0D92EC0E02E40CB6B03ED1DE;
 					};
 				};
 			};
@@ -279,6 +298,7 @@
 			projectRoot = "";
 			targets = (
 				0D92EC0E02E40CB6B03ED1DE /* JustZenGo */,
+				E2AE1DF9618F14CCF6CCB7A4 /* JustZenGoUITests */,
 				9E071D8697517A8A8A175985 /* JustZenGoWidget */,
 			);
 		};
@@ -296,6 +316,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		08F3FBF18B751741D3DCC595 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96B558C82B599E2A7D6F61D0 /* JustZenGoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		23F41C275F91904131089E8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,10 +383,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F1CAB76D5C1B74D40AB6215A /* PBXTargetDependency */ = {
+		BD9ED111054DEC5B68C25636 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9E071D8697517A8A8A175985 /* JustZenGoWidget */;
-			targetProxy = 0A6FBCEA736EFBACDB3D437B /* PBXContainerItemProxy */;
+			target = 0D92EC0E02E40CB6B03ED1DE /* JustZenGo */;
+			targetProxy = 82B2A5C391B63FC6E52770EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -371,7 +399,7 @@
 				DEVELOPMENT_TEAM = 9L6N2ZF26B;
 				INFOPLIST_FILE = JustZenGoWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZen.widget;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -413,7 +441,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -472,7 +500,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -512,13 +540,37 @@
 				DEVELOPMENT_TEAM = 9L6N2ZF26B;
 				INFOPLIST_FILE = JustZenGoWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo.widget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZen.widget;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		529B3E330288654386F4F513 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZen.UITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JustZenGo;
+			};
+			name = Debug;
 		};
 		6252AFC62036B60CA378A6B0 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -531,7 +583,7 @@
 				DEVELOPMENT_TEAM = 9L6N2ZF26B;
 				INFOPLIST_FILE = JustZenGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZen;
 				SDKROOT = iphoneos;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -550,13 +602,37 @@
 				DEVELOPMENT_TEAM = 9L6N2ZF26B;
 				INFOPLIST_FILE = JustZenGo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZenGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZen;
 				SDKROOT = iphoneos;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
+		};
+		A2C3F54A84B5A78B20C2DBFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9L6N2ZF26B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ggsheng.JustZen.UITests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = JustZenGo;
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -566,6 +642,15 @@
 			buildConfigurations = (
 				02E2949D233F6586DB92EF68 /* Debug */,
 				4C1C93AD1FB81E52ACD9E1B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		B0CAF97B579C1603FF78A198 /* Build configuration list for PBXNativeTarget "JustZenGoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				529B3E330288654386F4F513 /* Debug */,
+				A2C3F54A84B5A78B20C2DBFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

@@ -22,7 +22,6 @@ struct JustZenApp: App {
         _ = FocusIntelligence.shared
         _ = ProjectManager.shared
         _ = AICoach.shared
-        _ = HealthIntegration.shared
         _ = CalendarIntegration.shared
         _ = LiveActivityManager.shared
         _ = ThemeManager.shared
