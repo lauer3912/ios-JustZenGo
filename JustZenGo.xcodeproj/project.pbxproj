@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00B9481BFD253271CA058143 /* MoodPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC2B2319A4D3A009E902D0CB /* MoodPickerView.swift */; };
+		02B95015AB9E39BB3BD6C231 /* HuggingFaceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EFD72FA22297996917E06E /* HuggingFaceClient.swift */; };
 		0729AEB1B33AFF7FCFED0473 /* AICoach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6817CBC807DBD189AEB50B39 /* AICoach.swift */; };
 		08DFE11FC807C28ECD50C5F4 /* RollingPomodoroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D68984F9C53571776B8459 /* RollingPomodoroView.swift */; };
 		1D9B6CFEE56C9C1B509BCFEF /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF14E3BB308C251CCF2EFE1 /* StatisticsView.swift */; };
@@ -21,8 +22,10 @@
 		433A124B8E7D563B9770D3D4 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAA933816E69BAB18D05460 /* SettingsView.swift */; };
 		46786EC33FFCE75099C91F2E /* FocusSounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C60269328727ADFCD86211 /* FocusSounds.swift */; };
 		49A3B9AFE8E8588198E679FA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C33CF248E22FF4C293C804 /* HistoryView.swift */; };
+		4D74635DD98E229343C15053 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F95FA40C897B3C75728BD65 /* PaywallView.swift */; };
 		4F9F1D259FC1574EE2F1879B /* HealthIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AAF3932542B67C7AD696BED /* HealthIntegration.swift */; };
 		55BE2C33D0DFD21D6882AD36 /* WidgetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB31892E3B477FA5486BB4A /* WidgetDataManager.swift */; };
+		5C456A2A11233CA91D9BB373 /* FreemiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACDF4AF0E369A90FF76F080 /* FreemiumView.swift */; };
 		5D7A91FFF251091844386A7C /* LevelingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BA82C91662DC21C8ED660E /* LevelingSystem.swift */; };
 		6679ECE6D36BA87AFEEDC538 /* StreakHeatmap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E635B52CB27B430623AC4B /* StreakHeatmap.swift */; };
 		6CAFFA9A7C9EB5133DAAC414 /* ReminderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61BA8BFAC198BCDAFB528A79 /* ReminderManager.swift */; };
@@ -39,12 +42,14 @@
 		9E5A8675C336E8D04008EBDB /* ShortcutsIntegration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59AEDB6963AD3C16DCF041F /* ShortcutsIntegration.swift */; };
 		A2908069939FE7C455319232 /* ReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E490C740C2D44071931228E /* ReportGenerator.swift */; };
 		A528F1BD6E606D3549BBFD18 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19E00841E6F90DB7F51CF6C /* ThemeManager.swift */; };
+		A9D802A4CA045F58EA039313 /* BuyservicesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E5A631BA0B766F5556AC37 /* BuyservicesClient.swift */; };
 		B44BA3564F31CD0A3823B28C /* FocusMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BAD274581FEAF8DBA69055F /* FocusMode.swift */; };
 		B5F66C4F55F91B5FA4185AD4 /* IntelligenceDashboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E2A2AD9BD73C88F5FF7291 /* IntelligenceDashboard.swift */; };
 		B76C449A63275C946AAFAB24 /* LiveActivityBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC5DEC9696B5C4F14E66455 /* LiveActivityBridge.swift */; };
 		B9685BA07CE0EF3F45E55365 /* ProjectTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7521378E8D8151766C6C2C /* ProjectTracking.swift */; };
 		B9DC3F24B3294B2608C67ED8 /* FocusIntelligence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81706EA04983654B14213F0 /* FocusIntelligence.swift */; };
 		BE5FB726A43913522CF9D08C /* Celebrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBB5474995908A7C5ACB7F6 /* Celebrations.swift */; };
+		BEC955CA18914E69F35CDDB7 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8F63885779C1B082CF296 /* ScreenshotTests.swift */; };
 		D15BE39CCC9D30AB25C14A39 /* FocusTimerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0597F7B29A2F03C5FECCABBD /* FocusTimerWidget.swift */; };
 		D8FE4E7CB449FBDAD8DCA1FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7DEE37FAA733A6C6F183F55 /* Assets.xcassets */; };
 		E12DCC38037BB2BF5593A9CD /* TimerStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E5983376E224A80AD93135 /* TimerStackManager.swift */; };
@@ -67,6 +72,9 @@
 		003BD42FDC495BC6437C25FE /* JustZenGoWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustZenGoWidget.entitlements; sourceTree = "<group>"; };
 		0597F7B29A2F03C5FECCABBD /* FocusTimerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimerWidget.swift; sourceTree = "<group>"; };
 		0DBB5474995908A7C5ACB7F6 /* Celebrations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Celebrations.swift; sourceTree = "<group>"; };
+		0F95FA40C897B3C75728BD65 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		12EFD72FA22297996917E06E /* HuggingFaceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HuggingFaceClient.swift; sourceTree = "<group>"; };
+		1ACDF4AF0E369A90FF76F080 /* FreemiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreemiumView.swift; sourceTree = "<group>"; };
 		1C5F4642E8F293DB206C9942 /* FocusTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimerApp.swift; sourceTree = "<group>"; };
 		1E490C740C2D44071931228E /* ReportGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportGenerator.swift; sourceTree = "<group>"; };
 		217FF4F5DCC9271BA7395CF0 /* AppleDesignTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleDesignTheme.swift; sourceTree = "<group>"; };
@@ -74,6 +82,7 @@
 		32D68984F9C53571776B8459 /* RollingPomodoroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPomodoroView.swift; sourceTree = "<group>"; };
 		3ADBE43AEE4A7D142A1F997C /* RollingPomodoro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPomodoro.swift; sourceTree = "<group>"; };
 		4111E840091F3A896799D19C /* MoodEnergyLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodEnergyLogging.swift; sourceTree = "<group>"; };
+		44B8F63885779C1B082CF296 /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
 		52E1A9C4FC9F3D2EB01C1E69 /* TimerAnimationStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAnimationStyles.swift; sourceTree = "<group>"; };
 		55BA82C91662DC21C8ED660E /* LevelingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingSystem.swift; sourceTree = "<group>"; };
 		56EB8AF9584F7FB1E1037656 /* JustZenGoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = JustZenGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +120,7 @@
 		EE56084C8BF669CC87021802 /* JustZenGoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustZenGoUITests.swift; sourceTree = "<group>"; };
 		F1AFF3E4411F44BF1B8E59C9 /* JustZenGo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = JustZenGo.entitlements; sourceTree = "<group>"; };
 		F1B4E1A9C84EE1D7909C0D61 /* WellnessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellnessManager.swift; sourceTree = "<group>"; };
+		F1E5A631BA0B766F5556AC37 /* BuyservicesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyservicesClient.swift; sourceTree = "<group>"; };
 		F86539893C29D10387F86428 /* DailyPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyPlanner.swift; sourceTree = "<group>"; };
 		FC2B2319A4D3A009E902D0CB /* MoodPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodPickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,10 +136,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9955EA66354E80992C47394D /* Freemium */ = {
+			isa = PBXGroup;
+			children = (
+				F1E5A631BA0B766F5556AC37 /* BuyservicesClient.swift */,
+				1ACDF4AF0E369A90FF76F080 /* FreemiumView.swift */,
+				12EFD72FA22297996917E06E /* HuggingFaceClient.swift */,
+				0F95FA40C897B3C75728BD65 /* PaywallView.swift */,
+			);
+			path = Freemium;
+			sourceTree = "<group>";
+		};
 		D70E11B154ECA1ED8953BBF6 /* JustZenGoUITests */ = {
 			isa = PBXGroup;
 			children = (
 				EE56084C8BF669CC87021802 /* JustZenGoUITests.swift */,
+				44B8F63885779C1B082CF296 /* ScreenshotTests.swift */,
 			);
 			path = JustZenGoUITests;
 			sourceTree = "<group>";
@@ -180,6 +202,7 @@
 				F1B4E1A9C84EE1D7909C0D61 /* WellnessManager.swift */,
 				615CD827C4CFE021DE7C38AC /* WidgetBridge.swift */,
 				BAB31892E3B477FA5486BB4A /* WidgetDataManager.swift */,
+				9955EA66354E80992C47394D /* Freemium */,
 			);
 			path = JustZenGo;
 			sourceTree = "<group>";
@@ -321,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B558C82B599E2A7D6F61D0 /* JustZenGoUITests.swift in Sources */,
+				BEC955CA18914E69F35CDDB7 /* ScreenshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +363,7 @@
 				0729AEB1B33AFF7FCFED0473 /* AICoach.swift in Sources */,
 				8CDD92EAC912BE7828AEC2A0 /* Achievement.swift in Sources */,
 				7DBDD533BE8B2B559CA0E0DC /* AppleDesignTheme.swift in Sources */,
+				A9D802A4CA045F58EA039313 /* BuyservicesClient.swift in Sources */,
 				38B20354195E1D71CCFC7A87 /* CalendarIntegration.swift in Sources */,
 				BE5FB726A43913522CF9D08C /* Celebrations.swift in Sources */,
 				F72A8A8754D0C7917E92C4FE /* ContentView.swift in Sources */,
@@ -351,14 +376,17 @@
 				B44BA3564F31CD0A3823B28C /* FocusMode.swift in Sources */,
 				46786EC33FFCE75099C91F2E /* FocusSounds.swift in Sources */,
 				2E9FB98C84493ECBD60C4639 /* FocusTimerApp.swift in Sources */,
+				5C456A2A11233CA91D9BB373 /* FreemiumView.swift in Sources */,
 				4F9F1D259FC1574EE2F1879B /* HealthIntegration.swift in Sources */,
 				49A3B9AFE8E8588198E679FA /* HistoryView.swift in Sources */,
+				02B95015AB9E39BB3BD6C231 /* HuggingFaceClient.swift in Sources */,
 				B5F66C4F55F91B5FA4185AD4 /* IntelligenceDashboard.swift in Sources */,
 				5D7A91FFF251091844386A7C /* LevelingSystem.swift in Sources */,
 				B76C449A63275C946AAFAB24 /* LiveActivityBridge.swift in Sources */,
 				415983257635C4E263054CA6 /* Models.swift in Sources */,
 				FA2515DE442D7C201C470CF3 /* MoodEnergyLogging.swift in Sources */,
 				00B9481BFD253271CA058143 /* MoodPickerView.swift in Sources */,
+				4D74635DD98E229343C15053 /* PaywallView.swift in Sources */,
 				B9685BA07CE0EF3F45E55365 /* ProjectTracking.swift in Sources */,
 				6CAFFA9A7C9EB5133DAAC414 /* ReminderManager.swift in Sources */,
 				A2908069939FE7C455319232 /* ReportGenerator.swift in Sources */,
@@ -441,7 +469,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 22;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -455,7 +483,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -500,7 +528,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 22;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -520,7 +548,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
