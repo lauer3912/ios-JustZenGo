@@ -17,6 +17,22 @@ struct SettingsView: View {
                 
                 ScrollView {
                     VStack(spacing: 24) {
+                        // Account & Freemium
+                        SettingsSection(title: "Account & Membership") {
+                            NavigationLink(destination: FreemiumView()) {
+                                HStack {
+                                    Image(systemName: "sparkles")
+                                        .foregroundColor(.yellow)
+                                    Text("Credits & Pro Upgrade")
+                                        .foregroundColor(.white)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(.gray)
+                                }
+                                .padding(.vertical, 8)
+                            }
+                        }
+
                         // Timer Settings
                         SettingsSection(title: "Timer Settings") {
                             VStack(spacing: 16) {
